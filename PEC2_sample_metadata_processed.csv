@@ -1,0 +1,389 @@
+Cohort,Individual_ID,Biological_Sex,Age_death,Disorder,1000G_ancestry
+CMC,CMC_MSSM_002,male,42,control,EUR
+CMC,CMC_MSSM_033,female,81,control,AFR
+CMC,CMC_MSSM_035,male,75,control,EUR
+CMC,CMC_MSSM_036,female,82,control,EUR
+CMC,CMC_MSSM_048,male,84,Schizophrenia,EUR
+CMC,CMC_MSSM_049,female,61,control,EUR
+CMC,CMC_MSSM_056,female,67,control,EUR
+CMC,CMC_MSSM_058,female,76,control,AMR
+CMC,CMC_MSSM_060,male,89+,control,AFR
+CMC,CMC_MSSM_067,female,81,control,EUR
+CMC,CMC_MSSM_072,female,66,control,EUR
+CMC,CMC_MSSM_077,female,76,control,AMR
+CMC,CMC_MSSM_080,male,84,control,EUR
+CMC,CMC_MSSM_081,female,79,control,EUR
+CMC,CMC_MSSM_083,male,69,control,SAS
+CMC,CMC_MSSM_085,male,74,control,EUR
+CMC,CMC_MSSM_086,male,77,control,AFR
+CMC,CMC_MSSM_089,male,89+,control,EUR
+CMC,CMC_MSSM_090,male,70,control,EUR
+CMC,CMC_MSSM_094,female,89+,control,EUR
+CMC,CMC_MSSM_104,male,35,control,AFR
+CMC,CMC_MSSM_105,female,89+,control,EUR
+CMC,CMC_MSSM_108,male,89+,control,EUR
+CMC,CMC_MSSM_113,male,75,Schizophrenia,EUR
+CMC,CMC_MSSM_115,female,50,Schizophrenia,EUR
+CMC,CMC_MSSM_116,female,74,Schizophrenia,EUR
+CMC,CMC_MSSM_117,male,86,control,EUR
+CMC,CMC_MSSM_130,male,41,control,EUR
+CMC,CMC_MSSM_131,male,59,control,AMR
+CMC,CMC_MSSM_140,female,85,control,EUR
+CMC,CMC_MSSM_148,female,70,Schizophrenia,AFR
+CMC,CMC_MSSM_173,male,53,control,EUR
+CMC,CMC_MSSM_174,male,79,control,EUR
+CMC,CMC_MSSM_185,male,81,control,EUR
+CMC,CMC_MSSM_190,male,84,control,EUR
+CMC,CMC_MSSM_192,male,86,Schizophrenia,EUR
+CMC,CMC_MSSM_208,female,89+,control,EUR
+CMC,CMC_MSSM_210,male,66,Schizophrenia,EUR
+CMC,CMC_MSSM_212,male,65,Schizophrenia,EAS
+CMC,CMC_MSSM_213,male,62,Schizophrenia,EUR
+CMC,CMC_MSSM_217,female,79,control,EUR
+CMC,CMC_MSSM_218,male,76,Schizophrenia,EUR
+CMC,CMC_MSSM_219,female,86,control,EUR
+CMC,CMC_MSSM_221,female,81,control,AFR
+CMC,CMC_MSSM_223,male,71,control,AMR
+CMC,CMC_MSSM_224,female,53,Schizophrenia,AFR
+CMC,CMC_MSSM_227,male,27,control,EUR
+CMC,CMC_MSSM_228,male,43,control,EUR
+CMC,CMC_MSSM_230,male,38,control,EUR
+CMC,CMC_MSSM_232,male,24,control,EUR
+CMC,CMC_MSSM_234,male,89+,control,EUR
+CMC,CMC_MSSM_238,female,81,control,EUR
+CMC,CMC_MSSM_242,male,71,control,EUR
+CMC,CMC_MSSM_247,male,60,control,EUR
+CMC,CMC_MSSM_249,male,84,control,EUR
+CMC,CMC_MSSM_251,male,61,control,EUR
+CMC,CMC_MSSM_272,male,48,control,EUR
+CMC,CMC_MSSM_278,female,60,control,AMR
+CMC,CMC_MSSM_280,female,85,control,EUR
+CMC,CMC_MSSM_282,male,88,control,EUR
+CMC,CMC_MSSM_283,female,89+,control,EUR
+CMC,CMC_MSSM_288,male,69,Schizophrenia,EUR
+CMC,CMC_MSSM_294,male,46,Schizophrenia,EUR
+CMC,CMC_MSSM_295,male,63,Schizophrenia,EUR
+CMC,CMC_MSSM_298,female,65,Schizophrenia,EUR
+CMC,CMC_MSSM_299,female,58,Schizophrenia,EUR
+CMC,CMC_MSSM_300,male,72,Schizophrenia,EUR
+CMC,CMC_MSSM_305,female,86,Schizophrenia,EUR
+CMC,CMC_MSSM_308,male,60,Schizophrenia,AFR
+CMC,CMC_MSSM_309,female,84,Schizophrenia,AMR
+CMC,CMC_MSSM_312,male,68,Schizophrenia,EUR
+CMC,CMC_MSSM_313,male,67,Schizophrenia,EUR
+CMC,CMC_MSSM_315,female,89+,Schizophrenia,EUR
+CMC,CMC_MSSM_316,male,40,Schizophrenia,AFR
+CMC,CMC_MSSM_321,male,48,Schizophrenia,AFR
+CMC,CMC_MSSM_323,male,89+,Schizophrenia,EUR
+CMC,CMC_MSSM_326,male,82,Schizophrenia,AFR
+CMC,CMC_MSSM_327,female,81,Schizophrenia,EUR
+CMC,CMC_MSSM_338,female,56,Schizophrenia,EUR
+CMC,CMC_MSSM_340,male,76,Schizophrenia,EUR
+CMC,CMC_MSSM_341,male,65,Schizophrenia,AMR
+CMC,CMC_MSSM_347,male,82,Schizophrenia,EUR
+CMC,CMC_MSSM_349,male,79,Schizophrenia,EUR
+CMC,CMC_MSSM_352,male,64,Schizophrenia,EUR
+CMC,CMC_MSSM_355,female,81,Schizophrenia,EUR
+CMC,CMC_MSSM_358,male,64,control,AFR
+CMC,CMC_MSSM_360,female,89+,Schizophrenia,EUR
+CMC,CMC_MSSM_362,male,73,Schizophrenia,EUR
+CMC,CMC_MSSM_369,male,89+,control,EAS
+CMC,CMC_MSSM_371,male,73,Schizophrenia,AMR
+CMC,CMC_MSSM_372,male,89+,Schizophrenia,EUR
+CMC,CMC_MSSM_375,male,89+,Schizophrenia,AFR
+CMC,CMC_MSSM_377,male,66,Schizophrenia,EUR
+CMC,CMC_MSSM_378,female,70,Schizophrenia,AFR
+CMC,CMC_MSSM_380,female,74,control,AMR
+CMC,CMC_MSSM_386,male,85,Schizophrenia,EUR
+CMC,CMC_MSSM_390,male,86,Schizophrenia,EUR
+CMC,CMC_MSSM_403,male,69,Schizophrenia,EUR
+CMC,CMC_MSSM_405,male,39,Schizophrenia,AFR
+CMC,CMC_MSSM_443,male,77,Schizophrenia,EUR
+DevBrain,HSB1574_DFC,male,34,Williams Syndrome,EUR
+DevBrain,HSB189_DFC,male,36,control,EUR
+DevBrain,HSB290_DFC,male,42,control,EUR
+DevBrain,HSB317_DFC,male,47,control,EUR
+DevBrain,HSB340_DFC,male,18.94,control,AFR
+DevBrain,HSB373_DFC,male,14.35,ASD,EUR
+DevBrain,HSB375_DFC,male,46.37,ASD,EUR
+DevBrain,HSB378_DFC,male,33.23,ASD,AMR
+DevBrain,HSB379_DFC,female,15.89,ASD,EUR
+DevBrain,HSB380_DFC,male,19.11,ASD,EUR
+DevBrain,HSB384_DFC,male,16.73,ASD,EUR
+DevBrain,HSB434_DFC,male,20.75,ASD,EUR
+DevBrain,HSB517_DFC,male,27.3,ASD,EAS
+DevBrain,HSB533_DFC,male,27.39,ASD,EUR
+DevBrain,HSB5437_DFC,male,17,Williams Syndrome,AMR
+DevBrain,HSB5857_DFC,female,42,Williams Syndrome,EUR
+Girgenti-snMultiome,RT00372N,male,89+,control,AFR
+Girgenti-snMultiome,RT00373N,male,47.00616016,control,EUR
+Girgenti-snMultiome,RT00374N,male,45.12799452,control,EUR
+Girgenti-snMultiome,RT00375N,male,18.62822268,control,EUR
+Girgenti-snMultiome,RT00376N,male,28.55578371,control,EUR
+Girgenti-snMultiome,RT00377N,male,40.7,control,EUR
+Girgenti-snMultiome,RT00378N,male,79.47969427,control,EUR
+Girgenti-snMultiome,RT00379N,female,17.42642026,control,AMR
+Girgenti-snMultiome,RT00380N,male,48.59148985,control,AFR
+Girgenti-snMultiome,RT00381N,female,34.79,control,AFR
+Girgenti-snMultiome,RT00382N,male,60.05475702,control,EUR
+Girgenti-snMultiome,RT00383N,male,43.71514944,control,EUR
+Girgenti-snMultiome,RT00384N,male,65.59057723,control,EUR
+Girgenti-snMultiome,RT00385N,female,68.2602099,control,EUR
+Girgenti-snMultiome,RT00386N,male,59.98083504,control,AFR
+Girgenti-snMultiome,RT00387N,male,51.63,control,EUR
+Girgenti-snMultiome,RT00388N,male,43.67430983,control,EUR
+Girgenti-snMultiome,RT00390N,female,51.12673968,control,EUR
+Girgenti-snMultiome,RT00391N,male,39.68252339,control,EUR
+IsoHuB,AN08161,female,36,control,EUR
+IsoHuB,UMB5168,female,15,control,EUR
+IsoHuB,UMB5342,male,23,control,AFR
+IsoHuB,UMB5376,male,13,control,EUR
+LIBD,Br2720,female,48.22,control,EUR
+LIBD,Br2743,male,61.54,control,EUR
+LIBD,Br3942,male,47.53,control,EUR
+LIBD,Br6423,male,51.73,control,EUR
+LIBD,Br6432,male,48.88,control,EUR
+LIBD,Br6471,male,55.46,control,EUR
+LIBD,Br6522,male,33.39,control,EUR
+LIBD,Br8325,female,57.62,control,EUR
+LIBD,Br8492,female,53.4,control,EUR
+LIBD,Br8667,female,37.33,control,EUR
+Ma_et_al,HSB106,male,64,Control,EUR
+Ma_et_al,HSB628,female,50,Control,AFR
+MultiomeBrain,1041,female,36.7,Schizophrenia,AFR
+MultiomeBrain,1317,female,56.6,Bipolar Disorder,EUR
+MultiomeBrain,1320,male,53.2,Schizophrenia,AFR
+MultiomeBrain,1390,female,42.7,control,AFR
+MultiomeBrain,1414,male,34.7,Bipolar Disorder,EUR
+MultiomeBrain,1461,male,30.6,Bipolar Disorder,EUR
+MultiomeBrain,1507,male,31,Schizophrenia,EUR
+MultiomeBrain,1601,male,75.9,Bipolar Disorder,EUR
+MultiomeBrain,1676,male,68,Schizophrenia,EUR
+MultiomeBrain,1713,male,20.7,Bipolar Disorder,EUR
+MultiomeBrain,1734,male,26.2,Bipolar Disorder,EUR
+MultiomeBrain,2052,male,40.1,control,EUR
+MultiomeBrain,2083,female,38.3,Bipolar Disorder,EUR
+MultiomeBrain,2275,female,45.1,Bipolar Disorder,EUR
+MultiomeBrain,2520,male,24.6,Bipolar Disorder,EUR
+MultiomeBrain,2653,female,44.7,Schizophrenia,EAS
+MultiomeBrain,2677,female,43.8,Schizophrenia,EAS
+MultiomeBrain,2686,female,45.6,Bipolar Disorder,EUR
+MultiomeBrain,2780,male,17.9,control,EUR
+MultiomeBrain,2781,male,38.8,control,EUR
+MultiomeBrain,2791,male,55.5,control,EAS
+PTSDBrainomics,sc1,male,38.99,control,EUR
+PTSDBrainomics,sc11,female,49.02669405,control,EUR
+PTSDBrainomics,sc12,female,57.82,control,EUR
+PTSDBrainomics,sc13,male,60.0698380133333,control,EUR
+PTSDBrainomics,sc18,male,52.5,MDD,EUR
+PTSDBrainomics,sc2,male,50.01,control,AFR
+PTSDBrainomics,sc21,male,46.58,MDD,EUR
+PTSDBrainomics,sc3,male,45.3,control,AFR
+PTSDBrainomics,sc31,female,54.60905772,MDD,EUR
+PTSDBrainomics,sc32,male,54.2,MDD,EUR
+PTSDBrainomics,sc33,male,40.04,PTSD,AFR
+PTSDBrainomics,sc34,male,46.78,PTSD,AFR
+PTSDBrainomics,sc35,male,52.98,PTSD,EUR
+PTSDBrainomics,sc42,male,26.4933333333333,PTSD,EUR
+PTSDBrainomics,sc43,female,49.7133333333333,PTSD,EUR
+PTSDBrainomics,sc44,male,29.22683094,PTSD,EUR
+PTSDBrainomics,sc5,male,39.76454483,control,EUR
+PTSDBrainomics,sc6,male,42.5269222,control,EUR
+PTSDBrainomics,sc7,male,52.92,control,EUR
+ROSMAP,ROS1,female,89+,control,EUR
+ROSMAP,ROS11,female,89+,cognitive impairment,EUR
+ROSMAP,ROS12,female,81.67556468,cognitive impairment,EUR
+ROSMAP,ROS13,male,80.09856263,cognitive impairment,EUR
+ROSMAP,ROS14,male,88.39972621,control,EUR
+ROSMAP,ROS15,male,79.53456537,control,EUR
+ROSMAP,ROS16,male,84.98836413,control,EUR
+ROSMAP,ROS17,male,76.8843258,cognitive impairment,EUR
+ROSMAP,ROS18,male,89+,control,EUR
+ROSMAP,ROS19,male,80.94455852,control,EUR
+ROSMAP,ROS2,female,89+,control,EUR
+ROSMAP,ROS20,male,80.18069815,Alzheimers/dementia,EUR
+ROSMAP,ROS21,male,86.13004791,Alzheimers/dementia,EAS
+ROSMAP,ROS22,male,83.39767283,cognitive impairment,EUR
+ROSMAP,ROS24,male,86.91581109,cognitive impairment,EUR
+ROSMAP,ROS25,female,81.46748802,Alzheimers/dementia,EUR
+ROSMAP,ROS26,female,89+,Alzheimers/dementia,EUR
+ROSMAP,ROS27,female,89+,Alzheimers/dementia,EUR
+ROSMAP,ROS28,female,87.6659822,Alzheimers/dementia,EUR
+ROSMAP,ROS29,female,76.05749487,cognitive impairment,EUR
+ROSMAP,ROS3,female,79.1156742,control,EUR
+ROSMAP,ROS30,female,87.44969199,cognitive impairment,EUR
+ROSMAP,ROS31,female,82.71047228,Alzheimers/dementia,EUR
+ROSMAP,ROS32,female,89+,Alzheimers/dementia,EUR
+ROSMAP,ROS33,female,89+,Alzheimers/dementia,EUR
+ROSMAP,ROS34,female,74.77344285,Alzheimers/dementia,EUR
+ROSMAP,ROS35,female,83.63586585,Alzheimers/dementia,EUR
+ROSMAP,ROS36,female,89+,Alzheimers/dementia,EUR
+ROSMAP,ROS37,male,86.40383299,control,EUR
+ROSMAP,ROS38,male,88.46817248,Alzheimers/dementia,EUR
+ROSMAP,ROS39,male,89+,Alzheimers/dementia,EUR
+ROSMAP,ROS4,female,89+,Alzheimers/dementia,EUR
+ROSMAP,ROS40,male,85.82888433,Alzheimers/dementia,EUR
+ROSMAP,ROS41,male,85.77686516,Alzheimers/dementia,EUR
+ROSMAP,ROS42,male,87.23887748,Alzheimers/dementia,EUR
+ROSMAP,ROS43,male,83.72895277,control,EUR
+ROSMAP,ROS44,male,80.5338809,cognitive impairment,EUR
+ROSMAP,ROS45,male,89+,Alzheimers/dementia,EUR
+ROSMAP,ROS46,male,83.49623546,Alzheimers/dementia,AFR
+ROSMAP,ROS47,male,86.93223819,Alzheimers/dementia,EUR
+ROSMAP,ROS48,male,86.2696783,control,EUR
+ROSMAP,ROS5,female,88.92539357,control,EUR
+ROSMAP,ROS6,female,83.72895277,Alzheimers/dementia,EUR
+ROSMAP,ROS7,female,89+,control,EUR
+ROSMAP,ROS8,female,87.50992471,Alzheimers/dementia,EUR
+ROSMAP,ROS9,female,87.30184805,cognitive impairment,EUR
+SZBDMulti-Seq,BD1,female,73,Bipolar Disorder,EUR
+SZBDMulti-Seq,BD10,male,65,Bipolar Disorder,EUR
+SZBDMulti-Seq,BD11,female,89+,Bipolar Disorder,EUR
+SZBDMulti-Seq,BD12,female,77,Bipolar Disorder,EUR
+SZBDMulti-Seq,BD13,male,77,Bipolar Disorder,EUR
+SZBDMulti-Seq,BD14,male,36,Bipolar Disorder,EUR
+SZBDMulti-Seq,BD15,male,74,Bipolar Disorder,EUR
+SZBDMulti-Seq,BD16,male,85,Bipolar Disorder,EUR
+SZBDMulti-Seq,BD17,male,51,Bipolar Disorder,EUR
+SZBDMulti-Seq,BD18,male,83,Bipolar Disorder,EUR
+SZBDMulti-Seq,BD19,female,85,Bipolar Disorder,EUR
+SZBDMulti-Seq,BD2,female,80,Bipolar Disorder,EUR
+SZBDMulti-Seq,BD20,female,51,Bipolar Disorder,EUR
+SZBDMulti-Seq,BD21,female,66,Bipolar Disorder,EUR
+SZBDMulti-Seq,BD22,female,64,Bipolar Disorder,EUR
+SZBDMulti-Seq,BD23,female,80,Bipolar Disorder,EUR
+SZBDMulti-Seq,BD24,male,75,Bipolar Disorder,EUR
+SZBDMulti-Seq,BD3,male,24,Bipolar Disorder,EUR
+SZBDMulti-Seq,BD4,female,76,Bipolar Disorder,EUR
+SZBDMulti-Seq,BD5,male,71,Bipolar Disorder,EUR
+SZBDMulti-Seq,BD6,female,61,Bipolar Disorder,EUR
+SZBDMulti-Seq,BD7,male,73,Bipolar Disorder,EUR
+SZBDMulti-Seq,BD8,female,82,Bipolar Disorder,EUR
+SZBDMulti-Seq,BD9,male,82,Bipolar Disorder,EUR
+SZBDMulti-Seq,CON1,female,72,control,EUR
+SZBDMulti-Seq,CON10,female,62,control,EUR
+SZBDMulti-Seq,CON11,male,52,control,EUR
+SZBDMulti-Seq,CON12,male,68,control,EUR
+SZBDMulti-Seq,CON13,male,68,control,EUR
+SZBDMulti-Seq,CON14,male,72,control,EUR
+SZBDMulti-Seq,CON15,female,59,control,EUR
+SZBDMulti-Seq,CON16,male,42,control,EUR
+SZBDMulti-Seq,CON17,female,89+,control,EUR
+SZBDMulti-Seq,CON18,female,53,control,EUR
+SZBDMulti-Seq,CON19,female,58,control,EUR
+SZBDMulti-Seq,CON2,male,88,control,EUR
+SZBDMulti-Seq,CON20,female,52,control,EUR
+SZBDMulti-Seq,CON21,female,58,control,EUR
+SZBDMulti-Seq,CON22,female,62,control,EUR
+SZBDMulti-Seq,CON23,male,48,control,EUR
+SZBDMulti-Seq,CON24,female,44,control,AFR
+SZBDMulti-Seq,CON3,female,68,control,EUR
+SZBDMulti-Seq,CON4,male,52,control,EUR
+SZBDMulti-Seq,CON5,male,36,control,EUR
+SZBDMulti-Seq,CON6,female,69,control,EUR
+SZBDMulti-Seq,CON7,male,82,control,EUR
+SZBDMulti-Seq,CON8,male,80,control,EUR
+SZBDMulti-Seq,CON9,male,47,control,EUR
+SZBDMulti-Seq,SZ1,female,54,Schizophrenia,EUR
+SZBDMulti-Seq,SZ10,male,42,Schizophrenia,EUR
+SZBDMulti-Seq,SZ11,female,83,Schizophrenia,EUR
+SZBDMulti-Seq,SZ12,male,55,Schizophrenia,EUR
+SZBDMulti-Seq,SZ13,male,58,Schizophrenia,EUR
+SZBDMulti-Seq,SZ14,female,88,Schizophrenia,EUR
+SZBDMulti-Seq,SZ15,female,87,Schizophrenia,EUR
+SZBDMulti-Seq,SZ16,male,46,Schizophrenia,EUR
+SZBDMulti-Seq,SZ17,male,49,Schizophrenia,EUR
+SZBDMulti-Seq,SZ18,female,89+,Schizophrenia,EUR
+SZBDMulti-Seq,SZ19,female,79,Schizophrenia,EUR
+SZBDMulti-Seq,SZ2,male,44,Schizophrenia,EUR
+SZBDMulti-Seq,SZ20,female,76,Schizophrenia,EUR
+SZBDMulti-Seq,SZ21,female,56,Schizophrenia,EUR
+SZBDMulti-Seq,SZ22,female,61,Schizophrenia,EUR
+SZBDMulti-Seq,SZ23,male,22,Schizophrenia,EUR
+SZBDMulti-Seq,SZ24,male,44,Schizophrenia,EUR
+SZBDMulti-Seq,SZ3,female,67,Schizophrenia,EUR
+SZBDMulti-Seq,SZ4,male,89+,Schizophrenia,EUR
+SZBDMulti-Seq,SZ5,male,80,Schizophrenia,EUR
+SZBDMulti-Seq,SZ6,female,64,Schizophrenia,EUR
+SZBDMulti-Seq,SZ7,female,85,Schizophrenia,EUR
+SZBDMulti-Seq,SZ8,male,49,Schizophrenia,EUR
+SZBDMulti-Seq,SZ9,male,77,Schizophrenia,EUR
+UCLA-ASD,1185,male,4,control,EUR
+UCLA-ASD,1743,male,44,control,EUR
+UCLA-ASD,4787,male,19,control,AFR
+UCLA-ASD,5023,male,16,ASD,EUR
+UCLA-ASD,5144,female,7,ASD,EUR
+UCLA-ASD,5302,male,16,ASD,EUR
+UCLA-ASD,5308,male,4,ASD,EUR
+UCLA-ASD,5391,female,8,control,EUR
+UCLA-ASD,5408,male,6,control,AFR
+UCLA-ASD,5576,male,2,control,AFR
+UCLA-ASD,5670,female,17,control,EUR
+UCLA-ASD,5925,male,7,control,AFR
+UCLA-ASD,285A,male,8,ASD,EUR
+UCLA-ASD,2GGP,male,49,control,EUR
+UCLA-ASD,2NA6,male,16,ASD,EUR
+UCLA-ASD,2YK7,female,17,ASD,EUR
+UCLA-ASD,35BV,male,49,ASD,EUR
+UCLA-ASD,3HUF,male,23,ASD,EUR
+UCLA-ASD,75QW,male,60,control,EUR
+UCLA-ASD,8XCF,male,27,ASD,AFR
+UCLA-ASD,AN00493,male,27,ASD,EUR
+UCLA-ASD,AN03345,male,2,ASD,AMR
+UCLA-ASD,AN03935,male,19,ASD,EUR
+UCLA-ASD,AN05983,male,24,ASD,EUR
+UCLA-ASD,AN07176,male,21,control,EUR
+UCLA-ASD,AN07444,male,17,control,EUR
+UCLA-ASD,AN08792,male,30,ASD,EUR
+UCLA-ASD,AN09714,male,60,ASD,EUR
+UCLA-ASD,AN10679,female,41,control,AFR
+UCLA-ASD,AN12457,female,29,ASD,EUR
+UCLA-ASD,AN14762,male,9,ASD,EUR
+UCLA-ASD,AN15451,female,16,ASD,AFR
+UCLA-ASD,AN19511,male,8,ASD,EUR
+UCLA-ASD,AN19760,male,28,control,EUR
+UCLA-ASD,E4FN,male,27,control,EUR
+UCLA-ASD,EUFW,male,17,control,AFR
+UCLA-ASD,FHN9,male,24,control,EUR
+UCLA-ASD,FXMN,male,29,ASD,EUR
+UCLA-ASD,G7YU,male,27,control,AMR
+UCLA-ASD,HctZGA002,male,47,control,EUR
+UCLA-ASD,HQ4T,male,17,control,EAS
+UCLA-ASD,JU7U,male,25,ASD,EUR
+UCLA-ASD,KMC3,male,49,ASD,EUR
+UCLA-ASD,M9H3,female,58,ASD,EUR
+UCLA-ASD,NEPX,male,6,ASD,EUR
+UCLA-ASD,PA38,male,19,ASD,EUR
+UCLA-ASD,PH2A,male,20,control,EUR
+UCLA-ASD,PZ65,male,19,control,EUR
+UCLA-ASD,U8DM,female,28,control,EUR
+UCLA-ASD,UPIT13161,male,24,ASD,AFR
+UCLA-ASD,UPIT3152,male,23,control,AFR
+UCLA-ASD,WBYA,male,22,control,AFR
+Velmeshev_et_al,4341_BA46,male,13,Control,EUR
+Velmeshev_et_al,5144_PFC_Nova,male,7,ASD,EUR
+Velmeshev_et_al,5278_PFC_Nova,female,15,ASD,EUR
+Velmeshev_et_al,5294_BA9,male,19,ASD,EUR
+Velmeshev_et_al,5387_BA9,male,12,Control,EUR
+Velmeshev_et_al,5403_PFC_Nova,male,16,ASD,EUR
+Velmeshev_et_al,5408_PFC_Nova,male,6,Control,AFR
+Velmeshev_et_al,5419_PFC,female,19,ASD,EUR
+Velmeshev_et_al,5531_BA9,male,15,ASD,EUR
+Velmeshev_et_al,5538_PFC_Nova,female,19,Control,EUR
+Velmeshev_et_al,5546_BA9_Nova,female,34,Control,EUR
+Velmeshev_et_al,5565_BA9,male,12,ASD,AFR
+Velmeshev_et_al,5577_BA9,male,21,Control,EUR
+Velmeshev_et_al,5787_BA9_Nova,male,39,Control,EUR
+Velmeshev_et_al,5841_BA9,male,12,ASD,EUR
+Velmeshev_et_al,5864_BA9,male,20,ASD,AMR
+Velmeshev_et_al,5879_PFC_Nova,male,15,Control,AFR
+Velmeshev_et_al,5893_BA9,male,19,Control,EUR
+Velmeshev_et_al,5893_PFC_Nova,male,19,Control,EUR
+Velmeshev_et_al,5936_PFC_Nova,female,14,Control,AFR
+Velmeshev_et_al,5939_BA9,male,21,ASD,EUR
+Velmeshev_et_al,5945_PFC_Nova,male,20,ASD,EUR
+Velmeshev_et_al,5958_BA9,male,22,Control,AFR
+Velmeshev_et_al,5976_BA9,female,4,Control,UNKNOWN
+Velmeshev_et_al,5978_BA9,male,11,ASD,EUR
+Velmeshev_et_al,5981_BA9_Nova,female,44,Control,EUR
+Velmeshev_et_al,6033_BA9,female,14,ASD,EUR

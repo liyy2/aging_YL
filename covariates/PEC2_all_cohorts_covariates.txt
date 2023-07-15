@@ -1,0 +1,394 @@
+Cohort	Sample_ID	Biological_Sex	Age_death	Disorder	Genotype ancestry	Notes
+CMC	MSSM_036	female	82	control	EUR	0
+CMC	MSSM_056	female	67	control	EUR	0
+CMC	MSSM_067	female	81	control	EUR	0
+CMC	MSSM_072	female	66	control	EUR	0
+CMC	MSSM_080	male	84	control	EUR	0
+CMC	MSSM_086	male	77	control	AFR	0
+CMC	MSSM_105	female	89+	control	EUR	0
+CMC	MSSM_131	male	59	control	AMR	0
+CMC	MSSM_148	female	70	Schizophrenia	AFR	0
+CMC	MSSM_173	male	53	control	EUR	0
+CMC	MSSM_185	male	81	control	EUR	0
+CMC	MSSM_192	male	86	Schizophrenia	EUR	0
+CMC	MSSM_210	male	66	Schizophrenia	EUR	0
+CMC	MSSM_219	female	86	control	EUR	0
+CMC	MSSM_223	male	71	control	AMR	0
+CMC	MSSM_238	female	81	control	EUR	0
+CMC	MSSM_242	male	71	control	EUR	0
+CMC	MSSM_251	male	61	control	EUR	0
+CMC	MSSM_282	male	88	control	EUR	0
+CMC	MSSM_294	male	46	Schizophrenia	EUR	0
+CMC	MSSM_298	female	65	Schizophrenia	EUR	0
+CMC	MSSM_300	male	72	Schizophrenia	EUR	0
+CMC	MSSM_316	male	40	Schizophrenia	AFR	0
+CMC	MSSM_321	male	48	Schizophrenia	AFR	0
+CMC	MSSM_326	male	82	Schizophrenia	AFR	0
+CMC	MSSM_338	female	56	Schizophrenia	EUR	0
+CMC	MSSM_341	male	65	Schizophrenia	AMR	0
+CMC	MSSM_349	male	79	Schizophrenia	EUR	0
+CMC	MSSM_358	male	64	control	AFR	0
+CMC	MSSM_372	male	89+	Schizophrenia	EUR	0
+CMC	MSSM_377	male	66	Schizophrenia	EUR	0
+CMC	MSSM_378	female	70	Schizophrenia	AFR	0
+CMC	MSSM_380	female	74	control	AMR	0
+CMC	MSSM_390	male	86	Schizophrenia	EUR	0
+CMC	MSSM_403	male	69	Schizophrenia	EUR	0
+CMC	MSSM_278	female	60	control	AMR	0
+CMC	MSSM_249	male	84	control	EUR	0
+CMC	MSSM_272	male	48	control	EUR	0
+CMC	MSSM_347	male	82	Schizophrenia	EUR	0
+CMC	MSSM_085	male	74	control	EUR	0
+CMC	MSSM_108	male	89+	control	EUR	0
+CMC	MSSM_360	female	89+	Schizophrenia	EUR	0
+CMC	MSSM_295	male	63	Schizophrenia	EUR	0
+CMC	MSSM_313	male	67	Schizophrenia	EUR	0
+CMC	MSSM_174	male	79	control	EUR	0
+CMC	MSSM_081	female	79	control	EUR	0
+CMC	MSSM_247	male	60	control	EUR	0
+CMC	MSSM_369	male	89+	control	EAS	0
+CMC	MSSM_323	male	89+	Schizophrenia	EUR	0
+CMC	MSSM_308	male	60	Schizophrenia	AFR	0
+CMC	MSSM_115	female	50	Schizophrenia	EUR	0
+CMC	MSSM_083	male	69	control	SAS	0
+CMC	MSSM_386	male	85	Schizophrenia	EUR	0
+CMC	MSSM_257	male	86	Schizophrenia	EUR	0
+CMC	MSSM_208	female	89+	control	EUR	0
+CMC	MSSM_355	female	81	Schizophrenia	EUR	0
+CMC	MSSM_058	female	76	control	AMR	0
+CMC	MSSM_077	female	76	control	AMR	0
+CMC	MSSM_130	male	41	control	EUR	0
+CMC	MSSM_288	male	69	Schizophrenia	EUR	0
+CMC	MSSM_283	female	89+	control	EUR	No genotype
+CMC	MSSM_048	male	84	Schizophrenia	EUR	0
+CMC	MSSM_371	male	73	Schizophrenia	AMR	0
+CMC	MSSM_140	female	85	control	EUR	0
+CMC	MSSM_035	male	75	control	EUR	0
+CMC	MSSM_090	male	70	control	EUR	0
+CMC	MSSM_230	male	38	control	EUR	0
+CMC	MSSM_213	male	62	Schizophrenia	EUR	0
+CMC	MSSM_104	male	35	control	AFR	0
+CMC	MSSM_443	male	77	Schizophrenia	EUR	No genotype
+CMC	MSSM_002	male	42	control	EUR	0
+CMC	MSSM_405	male	39	Schizophrenia	AFR	0
+CMC	MSSM_228	male	43	control	EUR	0
+CMC	MSSM_309	female	84	Schizophrenia	AMR	0
+CMC	MSSM_299	female	58	Schizophrenia	EUR	0
+CMC	MSSM_190	male	84	control	EUR	0
+CMC	MSSM_060	male	89+	control	AFR	0
+CMC	MSSM_033	female	81	control	AFR	0
+CMC	MSSM_217	female	79	control	EUR	0
+CMC	MSSM_218	male	76	Schizophrenia	EUR	0
+CMC	MSSM_089	male	89+	control	EUR	0
+CMC	MSSM_116	female	74	Schizophrenia	EUR	0
+CMC	MSSM_280	female	85	control	EUR	0
+CMC	MSSM_315	female	89+	Schizophrenia	EUR	0
+CMC	MSSM_227	male	27	control	EUR	0
+CMC	MSSM_340	male	76	Schizophrenia	EUR	0
+CMC	MSSM_352	male	64	Schizophrenia	EUR	0
+CMC	MSSM_232	male	24	control	EUR	0
+CMC	MSSM_362	male	73	Schizophrenia	EUR	0
+CMC	MSSM_212	male	65	Schizophrenia	EAS	0
+CMC	MSSM_221	female	81	control	AFR	0
+CMC	MSSM_375	male	89+	Schizophrenia	AFR	0
+CMC	MSSM_327	female	81	Schizophrenia	EUR	0
+CMC	MSSM_312	male	68	Schizophrenia	EUR	0
+CMC	MSSM_049	female	61	control	EUR	0
+CMC	MSSM_224	female	53	Schizophrenia	AFR	0
+CMC	MSSM_305	female	86	Schizophrenia	EUR	0
+CMC	MSSM_117	male	86	control	EUR	0
+CMC	MSSM_113	male	75	Schizophrenia	EUR	0
+CMC	MSSM_234	male	89+	control	EUR	0
+CMC	MSSM_094	female	89+	control	EUR	0
+DevBrain	HSB189	male	36	control	EUR	Duplicate w/DevBrain HSB189+Sestan HSB189; No genotype
+DevBrain	HSB290	male	42	control	Missing	No genotype
+DevBrain	HSB317	male	47	control	EUR	No genotype
+DevBrain	HSB340	male	18.94	control	AFR	Duplicate w/ Sestan HSB340
+DevBrain	HSB375	male	46.37	ASD	EUR	0
+DevBrain	HSB378	male	33.23	ASD	EUR	Duplicate w/UCLA-ASD UMB5297
+DevBrain	HSB380	male	19.11	ASD	EUR	0
+DevBrain	HSB434	male	20.75	ASD	EUR	0
+DevBrain	HSB517	male	27.3	ASD	EAS	0
+DevBrain	HSB533	male	27.39	ASD	EUR	0
+DevBrain	HSB1574	male	34	Williams Syndrome	Missing	No genotype
+DevBrain	HSB5857	female	42	Williams Syndrome	Missing	No genotype
+DevBrain	HSB373	male	14.35	ASD	EUR	No genotype
+DevBrain	HSB379	female	15.89	ASD	EUR	0
+DevBrain	HSB384	male	16.73	ASD	EUR	0
+DevBrain	HSB5437	male	17	Williams Syndrome	Missing	No genotype
+IsoHuB	HSB189	male	36	control	EUR	Duplicate w/DevBrain HSB189+Sestan HSB189; No genotype
+IsoHuB	AN08161	female	36	control	EUR	Genotype not processed yet
+IsoHuB	UMB5342	male	23	control	AFR	0
+IsoHuB	UMB5168	female	15	control	EUR	0
+IsoHuB	UMB5376	male	13	control	EUR	0
+Kreigstein	5981_BA9	female	44	Control	Missing	No genotype
+Kreigstein	5546_BA9_Nova	female	34	Control	Missing	No genotype
+Kreigstein	5893_BA9	male	19	Control	Missing	No genotype
+Kreigstein	5787_BA9_Nova	male	39	Control	Missing	No genotype
+Kreigstein	5864_BA9	male	20	ASD	UNKNOWN	0
+Kreigstein	5841_BA9	male	12	ASD	EUR	0
+Kreigstein	5879_PFC_Nova	male	15	Control	Missing	No genotype
+Kreigstein	5936_PFC_Nova	female	14	Control	Missing	No genotype
+Kreigstein	5893_PFC_Nova	male	19	Control	Missing	No genotype
+Kreigstein	5278_PFC_Nova	female	15	ASD	EUR	0
+Kreigstein	5144_PFC_Nova	male	7	ASD	EUR	0
+Kreigstein	4341_BA46	male	13	Control	Missing	No genotype
+Kreigstein	5531_BA9	male	15	ASD	EUR	0
+Kreigstein	5538_PFC_Nova	female	19	Control	Missing	No genotype
+Kreigstein	5958_BA9	male	22	Control	Missing	No genotype
+Kreigstein	5976_BA9	female	4	Control	Missing	No genotype
+Kreigstein	5945_PFC_Nova	male	20	ASD	EUR	0
+Kreigstein	5939_BA9	male	21	ASD	EUR	0
+Kreigstein	5294_BA9	male	19	ASD	EUR	0
+Kreigstein	5387_BA9	male	12	Control	Missing	No genotype
+Kreigstein	5403_PFC_Nova	male	16	ASD	EUR	0
+Kreigstein	5408_PFC_Nova	male	6	Control	Missing	No genotype
+Kreigstein	5419_PFC	female	19	ASD	EUR	0
+Kreigstein	5978_BA9	male	11	ASD	EUR	0
+Kreigstein	6033_BA9	female	14	ASD	EUR	0
+Kreigstein	5577_BA9	male	21	Control	Missing	No genotype
+Kreigstein	5565_BA9	male	12	ASD	AFR	0
+Ma_Sestan	HSB106	male	64	Control	Missing	No genotype
+Ma_Sestan	HSB628	female	50	Control	Missing	No genotype
+Ma_Sestan	HSB189	male	36	Control	EUR	Duplicate w/DevBrain HSB189+Sestan HSB189; No genotype
+Ma_Sestan	HSB340	male	19	Control	AFR	Duplicate w/ Sestan HSB340
+SZBD	BD1	female	73	Bipolar Disorder	EUR	0
+SZBD	BD11	female	90	Bipolar Disorder	EUR	0
+SZBD	BD12	female	77	Bipolar Disorder	EUR	0
+SZBD	BD19	female	85	Bipolar Disorder	EUR	0
+SZBD	BD2	female	80	Bipolar Disorder	EUR	0
+SZBD	BD20	female	51	Bipolar Disorder	EUR	0
+SZBD	BD21	female	66	Bipolar Disorder	EUR	0
+SZBD	BD22	female	64	Bipolar Disorder	EUR	0
+SZBD	BD23	female	80	Bipolar Disorder	EUR	0
+SZBD	BD4	female	76	Bipolar Disorder	EUR	0
+SZBD	BD6	female	61	Bipolar Disorder	EUR	0
+SZBD	BD8	female	82	Bipolar Disorder	EUR	0
+SZBD	CON1	female	72	control	EUR	0
+SZBD	CON10	female	62	control	EUR	0
+SZBD	CON15	female	59	control	EUR	0
+SZBD	CON17	female	90	control	EUR	0
+SZBD	CON18	female	53	control	EUR	0
+SZBD	CON19	female	58	control	EUR	0
+SZBD	CON20	female	52	control	EUR	0
+SZBD	CON21	female	58	control	EUR	0
+SZBD	CON22	female	62	control	EUR	0
+SZBD	CON24	female	44	control	AFR	0
+SZBD	CON3	female	68	control	EUR	0
+SZBD	CON6	female	69	control	EUR	0
+SZBD	SZ1	female	54	Schizophrenia	EUR	0
+SZBD	SZ11	female	83	Schizophrenia	EUR	0
+SZBD	SZ14	female	88	Schizophrenia	EUR	0
+SZBD	SZ15	female	87	Schizophrenia	EUR	0
+SZBD	SZ18	female	90	Schizophrenia	EUR	0
+SZBD	SZ19	female	79	Schizophrenia	EUR	0
+SZBD	SZ20	female	76	Schizophrenia	EUR	0
+SZBD	SZ21	female	56	Schizophrenia	EUR	0
+SZBD	SZ22	female	61	Schizophrenia	EUR	0
+SZBD	SZ3	female	67	Schizophrenia	EUR	0
+SZBD	SZ6	female	64	Schizophrenia	EUR	0
+SZBD	SZ7	female	85	Schizophrenia	EUR	0
+SZBD	BD10	male	65	Bipolar Disorder	EUR	0
+SZBD	BD13	male	77	Bipolar Disorder	EUR	0
+SZBD	BD14	male	36	Bipolar Disorder	EUR	0
+SZBD	BD15	male	74	Bipolar Disorder	EUR	0
+SZBD	BD16	male	85	Bipolar Disorder	EUR	0
+SZBD	BD17	male	51	Bipolar Disorder	EUR	0
+SZBD	BD18	male	83	Bipolar Disorder	EUR	0
+SZBD	BD24	male	75	Bipolar Disorder	EUR	0
+SZBD	BD3	male	24	Bipolar Disorder	EUR	0
+SZBD	BD5	male	71	Bipolar Disorder	EUR	0
+SZBD	BD7	male	73	Bipolar Disorder	EUR	0
+SZBD	BD9	male	82	Bipolar Disorder	EUR	0
+SZBD	CON11	male	52	control	EUR	0
+SZBD	CON12	male	68	control	EUR	0
+SZBD	CON13	male	68	control	EUR	0
+SZBD	CON14	male	72	control	EUR	0
+SZBD	CON16	male	42	control	EUR	0
+SZBD	CON2	male	88	control	EUR	0
+SZBD	CON23	male	48	control	EUR	0
+SZBD	CON4	male	52	control	EUR	0
+SZBD	CON5	male	36	control	EUR	0
+SZBD	CON7	male	82	control	EUR	0
+SZBD	CON8	male	80	control	EUR	0
+SZBD	CON9	male	47	control	EUR	0
+SZBD	SZ10	male	42	Schizophrenia	EUR	0
+SZBD	SZ12	male	55	Schizophrenia	EUR	0
+SZBD	SZ13	male	58	Schizophrenia	EUR	0
+SZBD	SZ16	male	46	Schizophrenia	EUR	0
+SZBD	SZ17	male	49	Schizophrenia	EUR	0
+SZBD	SZ2	male	44	Schizophrenia	EUR	0
+SZBD	SZ23	male	22	Schizophrenia	EUR	0
+SZBD	SZ24	male	44	Schizophrenia	EUR	0
+SZBD	SZ4	male	90	Schizophrenia	EUR	0
+SZBD	SZ5	male	80	Schizophrenia	EUR	0
+SZBD	SZ8	male	49	Schizophrenia	EUR	0
+SZBD	SZ9	male	77	Schizophrenia	EUR	0
+UCLA-ASD	AN19760	male	28	control	EUR	0
+UCLA-ASD	AN08792	male	30	ASD	EUR	0
+UCLA-ASD	AN19511	male	8	ASD	EUR	0
+UCLA-ASD	AN14762	male	9	ASD	EUR	0
+UCLA-ASD	AN07176	male	21	control	EUR	0
+UCLA-ASD	AN10679	female	41	control	AFR	0
+UCLA-ASD	5023	male	16	ASD	EUR	0
+UCLA-ASD	1185	male	4	control	EUR	0
+UCLA-ASD	AN03345	male	2	ASD	AMR	0
+UCLA-ASD	AN05983	male	24	ASD	EUR	0
+UCLA-ASD	AN03935	male	19	ASD	EUR	0
+UCLA-ASD	285A	male	8	ASD	EUR	0
+UCLA-ASD	8XCF	male	27	ASD	AFR	0
+UCLA-ASD	75QW	male	60	control	EUR	0
+UCLA-ASD	AN00493	male	27	ASD	EUR	0
+UCLA-ASD	AN07444	male	17	control	EUR	0
+UCLA-ASD	AN09714	male	60	ASD	EUR	0
+UCLA-ASD	AN12457	female	29	ASD	EUR	0
+UCLA-ASD	WBYA	male	22	control	AFR	0
+UCLA-ASD	JU7U	male	25	ASD	Missing	No genotype
+UCLA-ASD	2NA6	male	16	ASD	EUR	0
+UCLA-ASD	EUFW	male	17	control	AFR	0
+UCLA-ASD	PH2A	male	20	control	EUR	0
+UCLA-ASD	FXMN	male	29	ASD	EUR	0
+UCLA-ASD	2GGP	male	49	control	EUR	0
+UCLA-ASD	35BV	male	49	ASD	EUR	0
+UCLA-ASD	4787	male	19	control	AFR	0
+UCLA-ASD	FHN9	male	24	control	EUR	0
+UCLA-ASD	2YK7	female	17	ASD	EUR	0
+UCLA-ASD	3HUF	male	23	ASD	EUR	0
+UCLA-ASD	KMC3	male	49	ASD	EUR	0
+UCLA-ASD	E4FN	male	27	control	EUR	0
+UCLA-ASD	U8DM	female	28	control	EUR	0
+UCLA-ASD	PZ65	male	19	control	EUR	0
+UCLA-ASD	UPIT13161	male	24	ASD	AFR	0
+UCLA-ASD	UPIT3152	male	23	control	AFR	0
+UCLA-ASD	HQ4T	male	17	control	EAS	0
+UCLA-ASD	G7YU	male	27	control	AMR	0
+UCLA-ASD	5297	male	33	ASD	AMR	Duplicate w/ DevBrain HSB378
+UCLA-ASD	5576	male	2	control	AFR	0
+UCLA-ASD	5308	male	4	ASD	EUR	0
+UCLA-ASD	NEPX	male	6	ASD	EUR	0
+UCLA-ASD	5408	male	6	control	AFR	0
+UCLA-ASD	AN15451	female	16	ASD	AFR	0
+UCLA-ASD	5670	female	17	control	EUR	0
+UCLA-ASD	M9H3	female	58	ASD	EUR	0
+UCLA-ASD	PA38	male	19	ASD	EUR	0
+UCLA-ASD	5144	female	7	ASD	EUR	0
+UCLA-ASD	5925	male	7	control	AFR	Genotype not processed yet
+UCLA-ASD	5391	female	8	control	EUR	0
+UCLA-ASD	1743	male	44	control	EUR	0
+UCLA-ASD	HctZGA002	male	47	control	EUR	Genotype not processed yet
+UCLA-ASD	5302	male	16	ASD	EUR	Part of Gandal dataset
+Urban	1041	female	36.7	Schizophrenia	AFR	0
+Urban	1317	female	56.6	Bipolar Disorder	EUR	0
+Urban	1320	male	53.2	Schizophrenia	AFR	0
+Urban	1390	female	42.7	control	AFR	0
+Urban	1414	male	34.7	Bipolar Disorder	EUR	0
+Urban	1461	male	30.6	Bipolar Disorder	EUR	0
+Urban	1507	male	31	Schizophrenia	EUR	0
+Urban	1601	male	75.9	Bipolar Disorder	EUR	0
+Urban	1676	male	68	Schizophrenia	EUR	0
+Urban	1713	male	20.7	Bipolar Disorder	EUR	0
+Urban	1734	male	26.2	Bipolar Disorder	EUR	0
+Urban	2052	male	40.1	control	EUR	0
+Urban	2083	female	38.3	Bipolar Disorder	EUR	0
+Urban	2275	female	45.1	Bipolar Disorder	EUR	0
+Urban	2520	male	24.6	Bipolar Disorder	EUR	0
+Urban	2653	female	44.7	Schizophrenia	EAS	0
+Urban	2677	female	43.8	Schizophrenia	EAS	0
+Urban	2686	female	45.6	Bipolar Disorder	EUR	0
+Urban	2780	male	17.9	control	EUR	0
+Urban	2781	male	38.8	control	Missing	0
+Urban	2791	male	55.5	control	EAS	0
+ROSMAP	R8744945	male	80.09856263	cognitive impairment	EUR	0
+ROSMAP	R9426782	male	89.02669405	Alzheimers/dementia	EUR	0
+ROSMAP	R9307768	male	88.39972621	control	AFR	No genotype
+ROSMAP	R8608442	male	88.46817248	Alzheimers/dementia	EUR	0
+ROSMAP	R2880377	female	90+	control	EUR	0
+ROSMAP	R7944883	female	74.77344285	Alzheimers/dementia	EUR	0
+ROSMAP	R4439627	male	79.53456537	control	EUR	0
+ROSMAP	R4146432	male	86.40383299	control	EUR	0
+ROSMAP	R4739508	female	90+	control	EUR	0
+ROSMAP	R9094222	female	90+	Alzheimers/dementia	EUR	0
+ROSMAP	R8725848	female	79.1156742	control	EUR	0
+ROSMAP	R3177264	female	76.05749487	cognitive impairment	EUR	0
+ROSMAP	R7721691	male	84.98836413	control	EUR	0
+ROSMAP	R2895885	male	85.77686516	Alzheimers/dementia	EUR	0
+ROSMAP	R4689636	male	76.8843258	cognitive impairment	EUR	0
+ROSMAP	R6114572	male	83.72895277	control	EUR	0
+ROSMAP	R4567280	female	90+	Alzheimers/dementia	EUR	0
+ROSMAP	R8629052	female	90+	Alzheimers/dementia	EUR	0
+ROSMAP	R4728676	male	90+	control	EUR	0
+ROSMAP	R4379962	male	89.71389459	Alzheimers/dementia	EUR	0
+ROSMAP	R7288382	female	88.92539357	control	EUR	0
+ROSMAP	R2830542	female	81.46748802	Alzheimers/dementia	EUR	0
+ROSMAP	R4482444	female	83.72895277	Alzheimers/dementia	EUR	0
+ROSMAP	R7770387	female	82.71047228	Alzheimers/dementia	EUR	0
+ROSMAP	R9113571	female	90+	cognitive impairment	EUR	0
+ROSMAP	R4042599	female	90+	Alzheimers/dementia	EUR	0
+ROSMAP	R1067972	female	81.67556468	cognitive impairment	EUR	0
+ROSMAP	R1538032	female	83.63586585	Alzheimers/dementia	EUR	0
+ROSMAP	R5816648	male	80.94455852	control	EUR	0
+ROSMAP	R3086211	male	80.5338809	cognitive impairment	EUR	0
+ROSMAP	R3405776	female	90+	control	EUR	0
+ROSMAP	R5885245	female	90+	Alzheimers/dementia	EUR	0
+ROSMAP	R6176158	female	87.50992471	Alzheimers/dementia	EUR	0
+ROSMAP	R4258320	female	87.44969199	cognitive impairment	EUR	0
+ROSMAP	R9551808	male	80.18069815	Alzheimers/dementia	EUR	0
+ROSMAP	R9500594	male	86.2696783	control	EUR	No genotype
+ROSMAP	R4415805	female	87.30184805	cognitive impairment	EUR	0
+ROSMAP	R7160627	female	87.6659822	Alzheimers/dementia	EUR	0
+ROSMAP	R2081705	male	86.13004791	Alzheimers/dementia	EUR	0
+ROSMAP	R8451530	male	87.23887748	Alzheimers/dementia	EUR	0
+ROSMAP	R4012015	male	83.39767283	cognitive impairment	EUR	0
+ROSMAP	R4262244	male	83.49623546	Alzheimers/dementia	AFR	No genotype
+ROSMAP	R3884524	female	90+	Alzheimers/dementia	EUR	0
+ROSMAP	R2294544	male	86.93223819	Alzheimers/dementia	EUR	0
+ROSMAP	R5196723	male	86.91581109	cognitive impairment	EUR	0
+ROSMAP	R3900996	male	85.82888433	Alzheimers/dementia	EUR	0
+LIBD	Br2720	female	48.22	control	Missing	Not in mapping file yet
+LIBD	Br6432	male	48.88	control	Missing	Not in mapping file yet
+LIBD	Br6471	male	55.46	control	Missing	Not in mapping file yet
+LIBD	Br6522	male	33.39	control	Missing	Not in mapping file yet
+LIBD	Br8492	female	53.4	control	Missing	Not in mapping file yet
+LIBD	Br2743	male	61.54	control	Missing	Not in mapping file yet
+LIBD	Br3942	male	47.53	control	Missing	Not in mapping file yet
+LIBD	Br6423	male	51.73	control	Missing	Not in mapping file yet
+LIBD	Br8667	female	37.33	control	Missing	Not in mapping file yet
+LIBD	Br8325	female	57.62	control	Missing	Not in mapping file yet
+PTSDBrainomics	sc11	female	NA	control	EUR	Not in mapping file yet
+PTSDBrainomics	sc12	female	NA	control	EUR	Not in mapping file yet
+PTSDBrainomics	sc13	male	NA	control	EUR	Not in mapping file yet
+PTSDBrainomics	sc18	male	NA	control	EUR	Not in mapping file yet
+PTSDBrainomics	sc2	male	NA	control	AFR	Not in mapping file yet
+PTSDBrainomics	sc21	male	NA	control	EUR	Not in mapping file yet
+PTSDBrainomics	sc3	male	NA	control	AFR	Not in mapping file yet
+PTSDBrainomics	sc31	female	NA	control	EUR	Not in mapping file yet
+PTSDBrainomics	sc32	male	NA	control	EUR	Not in mapping file yet
+PTSDBrainomics	sc33	male	NA	control	AFR	Not in mapping file yet
+PTSDBrainomics	sc34	male	NA	control	AFR	Not in mapping file yet
+PTSDBrainomics	sc35	male	NA	control	EUR	Not in mapping file yet
+PTSDBrainomics	sc42	male	NA	control	EUR	Not in mapping file yet
+PTSDBrainomics	sc43	female	NA	control	EUR	Not in mapping file yet
+PTSDBrainomics	sc44	male	NA	control	EUR	Not in mapping file yet
+PTSDBrainomics	sc7	male	NA	control	EUR	Not in mapping file yet
+PTSDBrainomics	sc6	male	NA	control	EUR	Not in mapping file yet
+PTSDBrainomics	sc1	male	NA	control	EUR	Not in mapping file yet
+PTSDBrainomics	sc5	male	NA	control	EUR	Not in mapping file yet
+Girgenti	5699	male	92.25	control	AFR	Not in mapping file yet
+Girgenti	8053	male	47.00616016	control	EUR	Not in mapping file yet
+Girgenti	6195	male	45.12799452	control	EUR	Not in mapping file yet
+Girgenti	8035	male	18.62822268	control	AMR	Not in mapping file yet
+Girgenti	6197	male	28.55578371	control	EUR	Not in mapping file yet
+Girgenti	8153	male	40.7	control	EUR	Not in mapping file yet
+Girgenti	6041	male	79.47969427	control	EUR	Not in mapping file yet
+Girgenti	8164	female	17.42642026	control	AFR	Not in mapping file yet
+Girgenti	6119	male	48.59148985	control	AFR	Not in mapping file yet
+Girgenti	5800	female	34.79	control	AFR	Not in mapping file yet
+Girgenti	5871	male	60.05475702	control	EUR	Not in mapping file yet
+Girgenti	8050	male	43.71514944	control	EUR	Not in mapping file yet
+Girgenti	5864	male	65.59057723	control	EUR	Not in mapping file yet
+Girgenti	6154	female	68.2602099	control	EUR	Not in mapping file yet
+Girgenti	6085	male	59.98083504	control	AFR	Not in mapping file yet
+Girgenti	5212	male	51.63	control	EUR	Not in mapping file yet
+Girgenti	6161	male	43.67430983	control	EUR	Not in mapping file yet
+Girgenti	8073	female	51.12673968	control	EUR	Not in mapping file yet
+Girgenti	8079	male	39.68252339	control	EUR	Not in mapping file yet
