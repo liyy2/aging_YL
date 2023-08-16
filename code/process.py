@@ -8,6 +8,8 @@ import xgboost
 from sklearn.metrics import mean_squared_error
 from sklearn.metrics import mean_absolute_error
 from sklearn.model_selection import GridSearchCV
+import argparse
+from shap_values import cal_shap_values
 
 def get_list_of_prefix_from_dir(path, dataset_id = '9'):
     if dataset_id == '9' or dataset_id == '24':
@@ -19,7 +21,6 @@ def get_list_of_prefix_from_dir(path, dataset_id = '9'):
     else:
         raise NotImplementedError()
 
-
 def read_gzipped_bed(file_path):
     with gzip.open(file_path, 'rt') as f:
         data = pd.read_csv(f, sep="\t")
@@ -28,7 +29,7 @@ def read_gzipped_bed(file_path):
 def get_hvg_across_ind(df, num_top_genes = 1000):
     variances = df.var(axis=1)
     hvg = variances.sort_values(ascending=False)
-    top_hvg = hvg.head(num_top_genes)
+    top_hvg = hvg.head(num_top_genes if num_top_genes > 0 else len(hvg))
     return top_hvg.index
 
 def get_random_genes(df, gene_num = 1000, seed = 42):
@@ -36,7 +37,6 @@ def get_random_genes(df, gene_num = 1000, seed = 42):
     np.random.seed(seed)
     idx = np.random.choice(df.index, gene_num, replace = False)
     return idx
-
 
 def log_normalize(df):
     # Normalize counts to total counts per cell
@@ -48,6 +48,10 @@ def log_normalize(df):
     df_log = np.log1p(df_norm)
     scaler = StandardScaler()
     df_standardized = df_log.T.apply(lambda x: scaler.fit_transform(x.values.reshape(-1,1)).flatten())
+    return df_standardized
+
+def transpose(df):
+    df_standardized = df.T.apply(lambda x: x.values.reshape(-1,1).flatten())
     return df_standardized
 
 def process_to_expression_matrix(name_prefix, dataset_id = '9'):
@@ -64,13 +68,13 @@ def process_to_expression_matrix(name_prefix, dataset_id = '9'):
     return expression_matrix
 
 
-def process_file(prefix, gene_num = 500, dataset_id = '9', random = False):
+def process_file(prefix, gene_num = 500, dataset_id = '9', random = False, log_norm = True, **kwags):
     expression_matrix = process_to_expression_matrix(prefix, dataset_id = dataset_id)
     if random:
         out = expression_matrix.loc[get_random_genes(expression_matrix, gene_num)]
     else:
         out = expression_matrix.loc[get_hvg_across_ind(expression_matrix, gene_num)]
-    return log_normalize(out)
+    return log_normalize(out) if log_norm else transpose(out)
 
 
 def process_cov_model_prediction(expression_df, dataset_id = '9', **kwags):
@@ -111,12 +115,21 @@ def process_cov_and_merge_cov(expression_df, dataset_id = '9', **kwags):
     return X, y
 
 
-def AD_model_split(X, y):
-    X_test = X.loc[X['Disorder_Alzheimers/dementia'] == 1]
-    y_test = y.loc[X['Disorder_Alzheimers/dementia'] == 1]
+def AD_model_split(X, y, random_state = 42, disease_type = 'control', **kwags):
+    print("Performing AD Model...")
+    all_disease_type = ['Alzheimers/dementia', 'Control', 'control', 'Schizophrenia', 'ASD', 'Bipolar Disorder']
+    assert disease_type in all_disease_type, "Disease type not found"
     X_train = X.loc[(X['Disorder_Control'] == 1) | (X['Disorder_control'] == 1)]
     y_train = y.loc[(X['Disorder_Control'] == 1) | (X['Disorder_control'] == 1)]
-    return X_train, X_test, y_train, y_test
+    X_train, X_holdout, y_train, y_holdout = train_test_split(X_train, y_train, random_state=random_state)
+    if (disease_type == 'Control') or (disease_type == 'control'):
+        X_test = X_holdout
+        y_test = y_holdout
+    else:
+        X_test = X.loc[X[f'Disorder_{disease_type}'] == 1]
+        y_test = y.loc[X[f'Disorder_{disease_type}'] == 1]
+    print(f'Healthy Training Samples {len(X_train)}; Disease Test Samples {len(X_test)}')
+    return X_train.drop([f'Disorder_{d}' for d in all_disease_type], axis = 1), X_test.drop([f'Disorder_{d}' for d in all_disease_type], axis = 1), y_train, y_test
 
 
 def stratified_train_test_split(X, y, test_size, random_state, num_bins = 10):
@@ -132,15 +145,21 @@ def stratified_train_test_split(X, y, test_size, random_state, num_bins = 10):
 
 
 
-def fit_model(X, y, model = 'XGBoost', grid_search_cv = 0, random_state = 42, AD_model = False, only_cov = False, remove_cov = False, stratify = True):
+def fit_model(X, y, model = 'XGBoost', grid_search_cv = 0, random_state = 42, 
+    AD_Model = False, only_cov = False, remove_cov = False, stratify = False, shap = False, feature_importance = False, **kwags):
     # Split the dataset into train and test sets
-    if not AD_model:
-        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=random_state)
-    elif stratify:
+    assert int(AD_Model) + int(stratify) <= 1, 'Confilicting train test split'
+    assert int(only_cov) + int(remove_cov) <= 1, 'Only conv and remove cov can only have one true value'
+    if stratify:
         X_train, X_test, y_train, y_test = stratified_train_test_split(X, y, test_size=0.2, random_state=random_state)
+    elif AD_Model:
+        X_train, X_test, y_train, y_test = AD_model_split(X, y, random_state=random_state, **kwags)
     else:
-        X_train, X_test, y_train, y_test = AD_model_split(X, y)
-
+        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=random_state)
+    
+    save = {}
+    save['train_index'] = X_train.index
+    save['test_index'] = X_test.index
     if only_cov:
         X_train = X_train.iloc[:,:25]
         X_test = X_test.iloc[:,:25]
@@ -149,18 +168,19 @@ def fit_model(X, y, model = 'XGBoost', grid_search_cv = 0, random_state = 42, AD
         X_test = X_test.iloc[:,25:]
     else:
         pass
-
     if model == 'XGBoost':
         if grid_search_cv >0:
             xgb = xgboost.XGBRegressor(random_state=random_state)
             param_grid = {
-                'n_estimators': [100, 200, 500],
+                'n_estimators': [500],
                 'learning_rate': [0.01, 0.05, 0.1],
                 'max_depth': [3, 4, 5],
                 'colsample_bytree': [0.3, 0.7],
                 'gamma': [0.0, 0.1, 0.2]
             }
-            grid = GridSearchCV(estimator=xgb, param_grid=param_grid, cv = grid_search_cv, scoring='neg_mean_squared_error', verbose=2, n_jobs=-1)
+            
+            grid = GridSearchCV(estimator=xgb, param_grid=param_grid, 
+            cv = grid_search_cv, scoring='neg_mean_squared_error', verbose=2, n_jobs=-1)
             # Print the best parameters
 
             grid.fit(X_train, y_train)
@@ -174,8 +194,22 @@ def fit_model(X, y, model = 'XGBoost', grid_search_cv = 0, random_state = 42, AD
     else:
         raise NotImplementedError()
 
+
     # Make predictions
     predictions = model.predict(X_test)
+    X = pd.concat([X_train, X_test])
+    if shap:
+        explainer, shap_values = cal_shap_values(model, X)
+        df_shap = pd.DataFrame(shap_values.values)
+        df_shap.columns = X.columns + '_Shap'
+        df_shap.index = X.index
+        save['shap'] = df_shap
+        save['X'] = X
+
+    if feature_importance:
+        feature_importance = model.feature_importances_
+        df_feature_importance = pd.DataFrame(feature_importance, index=X.columns, columns=['importance'])
+        save['feature_importance'] = df_feature_importance
 
     from scipy.stats import pearsonr
     from scipy.stats import spearmanr
@@ -189,19 +223,21 @@ def fit_model(X, y, model = 'XGBoost', grid_search_cv = 0, random_state = 42, AD
     print('RMSE: %.3f' % rmse_error )
     print('MAE: %.3f' % mae_error)
     return model, X_train, X_test, y_train, y_test, predictions, \
-    {'Pearson Correlation': correlation, 'Spearman Correlation': rho, 'RMSE': rmse_error, 'MAE': mae_error}
+    {'Pearson Correlation': correlation, 'Spearman Correlation': rho, 'RMSE': rmse_error, 'MAE': mae_error, 'Random_state': random_state}, save 
 
     # Now 'predictions' will hold the predicted 'Age_death' for the test set.
     
-def predict(list_of_prefix, gene_num = 500, fixed_index = None, dataset_id = '9', **kwags):
-    if len(list_of_prefix) == 1:
-        print(f'=======> Processing {list_of_prefix[0]}')
-        expression_df = process_file(list_of_prefix[0], gene_num, dataset_id = dataset_id)
-        if fixed_index is not None:
-            expression_df = expression_df.loc[fixed_index]
-        print(f'number of samples {len(expression_df.index)}')
-        print(f'number of genes {gene_num}')
-        return process_cov_model_prediction(expression_df, dataset_id = dataset_id, **kwags)
+def predict(list_of_prefix, gene_num = 500, fixed_index = None, dataset_id = '9', save_model = False, save_intermediate = False, **kwags):
+    # if len(list_of_prefix) == 1:
+    #     print(f'=======> Processing {list_of_prefix[0]}')
+    #     expression_df = process_file(list_of_prefix[0], gene_num, dataset_id = dataset_id, **kwags)
+    #     if fixed_index is not None:
+    #         expression_df = expression_df.loc[fixed_index]
+    #     print(f'number of samples {len(expression_df.index)}')
+    #     print(f'number of genes {gene_num}')
+    #     return process_cov_model_prediction(expression_df, dataset_id = dataset_id, **kwags)
+    stratify = kwags['stratify']
+    stratify = 'stratify' if stratify else 'random'
     list_of_predictions = []
     list_of_results = []
     for pre in list_of_prefix:
@@ -210,30 +246,48 @@ def predict(list_of_prefix, gene_num = 500, fixed_index = None, dataset_id = '9'
         if fixed_index is not None:
             expression_df = expression_df.loc[fixed_index]
         print(f'number of samples {len(expression_df.index)}')
-        print(f'number of genes {gene_num}')
-        model, X_train, X_test, y_train, y_test, predictions, ret = process_cov_model_prediction(expression_df, dataset_id = dataset_id, **kwags)
+        print(f'number of genes {len(list(expression_df))}')
+        model, X_train, X_test, y_train, y_test, predictions, ret, save = process_cov_model_prediction(expression_df, dataset_id = dataset_id, **kwags)
         list_of_predictions.append(predictions)
+        random_state = kwags['random_state']
+        if save_intermediate:
+            for k, val in save.items():
+                val = pd.Series(val) if isinstance(val, pd.Index) else val
+                output_name = f'Sample_size_{len(expression_df.index)}_{gene_num}_{dataset_id}_{pre}_{stratify}_random_state_{random_state}_{k}.csv'
+                val.to_csv(f'/gpfs/gibbs/pi/gerstein/jjl86/project/aging_YL/intermediate/{output_name}')
+            
+        if save_model:
+            import pickle
+            pickle.dump(model, open(f'/gpfs/gibbs/pi/gerstein/jjl86/project/aging_YL/model/Sample_size_{len(expression_df.index)}_{gene_num}_{dataset_id}_{pre}_model.pkl', 'wb'))
+
         ret['Celltype'] = pre
-        ret['number of samples'] = len(expression_df.index)
-        ret['number of genes'] = gene_num
+        ret['number of samples'] = len(X_train)
+        ret['number of genes'] = len(list(expression_df))
+        ret['number of features'] = X_train.shape[1]
         list_of_results.append(ret)
     
 
     # Baseline predictions
     if fixed_index is not None:
         print(f'=======> Processing Baseline')
-        model, X_train, X_test, y_train, y_test, predictions, ret = process_cov_model_prediction(expression_df, dataset_id = dataset_id,  
-        only_cov = True, **kwags)
+        model, X_train, X_test, y_train, y_test, predictions, ret, save = process_cov_model_prediction(expression_df, dataset_id = dataset_id,  
+        only_cov = True,  **kwags)
         list_of_predictions.append(predictions)
+        if save_intermediate:
+            for k, val in save.items():
+                val = pd.Series(val) if isinstance(val, pd.Index) else val
+                output_name = f'Sample_size_{len(expression_df.index)}_{gene_num}_{dataset_id}_Baseline_{stratify}__random_state_{random_state}_{k}.csv'
+                val.to_csv(f'/gpfs/gibbs/pi/gerstein/jjl86/project/aging_YL/intermediate/{output_name}')
         ret['Celltype'] = 'Baseline'
         ret['number of samples'] = len(expression_df.index)
         ret['number of genes'] = gene_num
+        ret['number of features'] = X_train.shape[1]
         list_of_results.append(ret)
     final_results = pd.DataFrame(list_of_results)
     return list_of_predictions, y_test, final_results
 
-def predict_with_different_seeds(list_of_prefix, gene_num = 500, fixed_index = None, dataset_id = '9', random_state = 42, num_splits = 10, **kwags):
-    list_of_seeds = [i + random_state for i in range(num_splits)]
+def predict_with_different_seeds(list_of_prefix, gene_num = 500, fixed_index = None, dataset_id = '9', random_state = 42, num_runs = 10, **kwags):
+    list_of_seeds = [i + random_state for i in range(num_runs)]
     final_results_list = []
     for seed in list_of_seeds:
         print(f'=======> Running with seed {seed}')
@@ -241,7 +295,7 @@ def predict_with_different_seeds(list_of_prefix, gene_num = 500, fixed_index = N
         gene_num = gene_num, 
         fixed_index = fixed_index, 
         dataset_id = dataset_id, 
-        random_state = seed)
+        random_state = seed, **kwags)
         final_results_list.append(final_results)
 
     final_results = pd.concat(final_results_list, ignore_index=True)
@@ -298,28 +352,47 @@ def train_val_test_split(X, y, test_size = 0.2, val_size = 0.25, random_state = 
     = train_test_split(X_train, y_train, test_size=val_size, random_state=random_state) # 0.25 x 0.8 = 0.2
     return X_train, X_val, X_test, y_train, y_val, y_test
 
+def parse_argument():
+    # argumant parser
+    parser = argparse.ArgumentParser(description='Process data from a given csv file and return a dataframe')
+    parser.add_argument('-g', '--gene_num', help='Number of genes', type=int, default=-1)
+    parser.add_argument('-d', '--dataset_id', help='Dataset id', default='24')
+    parser.add_argument('-p', '--partition', help = 'partition',type=int,default=1)
+    parser.add_argument('-i', '--index', help = 'index of the partition',type=int, default=0)
+    parser.add_argument('-s', '--stratify', help = 'Stratified sampling', type=int, default=0)
+    parser.add_argument('-c', '--cross_val', help = 'Cross Validation Fold', type = int, default=3)
+    parser.add_argument('-n', '--num_runs', help = 'Number of different seeds', type = int, default=10)
+    parser.add_argument('-A', '--AD_Model', help= 'Train on control and predict on AD', type = int, default=0)
+    parser.add_argument('--save_intermediate', help='save intermediate results', type = int, default=1)
+    parser.add_argument('--shap', help='perform shap', type = int, default=1)
+    parser.add_argument('--feature_importance', help='record feature importance', type = int, default=1)
+    args = parser.parse_args()
+    return args
+
+
 if __name__ == '__main__':
-    intersect_of_all = get_index_intersect(
-    [
- 'Chandelier.Pvalb',
+    args = parse_argument()
+    celltype_names =  [
+ 'L2.3.IT',
+ 'Oligo',
  'Astro',
- 'L5_IT',
- 'Vip',
- 'L2.3_IT', 'Sst.Sst_Chodl', 'Oligo' , 'L4_IT', 'L6_IT'], dataset_id = '21')
+ 'L4.IT',
+ 'OPC', 'Chandelier__Pvalb', 'Sst__Sst.Chodl' , 'L5.IT', 'L6.IT', 'Vip', 'Micro.PVM']
 
-    # list_of_predictions, y_test, ret = predict([
-    # 'Chandelier.Pvalb',
-    # 'Astro',
-    # 'L5_IT',
-    # 'Vip',
-    # 'L2.3_IT', 'Sst.Sst_Chodl', 'Oligo' , 'L4_IT', 'L6_IT'],
-    # gene_num = 500, dataset_id='21', fixed_index = intersect_of_all, AD_model = True)
+    # celltype_names = ['L2.3.IT']
+    intersect_of_all = get_index_intersect(celltype_names, dataset_id = args.dataset_id)
+    celltype_names_subsetted = [celltype_names[i] for i in range(args.index, len(celltype_names), args.partition)]
+   
+    rets = predict_with_different_seeds(celltype_names_subsetted,
+    gene_num = args.gene_num, dataset_id=args.dataset_id, 
+    fixed_index = intersect_of_all, 
+    AD_model = False, stratify = args.stratify, 
+    grid_search_cv = args.cross_val, 
+    num_splits = args.num_runs,
+    AD_Model = args.AD_Model, 
+    save_intermediate = args.save_intermediate, 
+    shap = args.shap, 
+    feature_importance = args.feature_importance)
 
-    rets = predict_with_different_seeds([
-    'Chandelier.Pvalb',
-    'Astro',
-    'L5_IT',
-    'Vip',
-    'L2.3_IT', 'Sst.Sst_Chodl', 'Oligo' , 'L4_IT', 'L6_IT'],
-    gene_num = 500, dataset_id='21', fixed_index = intersect_of_all, AD_model = True)
-    print(rets)
+    stratify = 'stratified' if args.stratify else 'random'
+    rets.to_csv(f'results_{args.index}_outof_{args.partition}_gene_num_{args.gene_num}_dataset_{args.dataset_id}_{stratify}.csv')
