@@ -22,19 +22,17 @@ def unique_everseen(seq, key=None):
 
 def plot_prediction(y_test, list_of_predictions, label, save_prefix = ''):
     matplotlib.style.use('seaborn')
-    sorted_values = [pred[y_test.reset_index()['Age_death'].sort_values().index] for pred in list_of_predictions]
-    n = len(sorted_values)
+
+    # n = len(sorted_values)
 
     fig, axs = plt.subplots(3, 3, figsize=(9, 9))
     for i, ax in enumerate(axs.flatten()):
         for j in range(1):
             index = i * 1 + j
-            if index < n:
-                ax.plot(sorted_values[index], label=f'{label[index]}')
-                ax.legend(loc = 'upper left' )
-            else:
-                break
-        ax.plot(np.array(y_test.reset_index()['Age_death'].sort_values()), label = 'Ground Truth')
+            sorted_values = [pred[y_test[index].reset_index()['Age_death'].sort_values().index] for pred in list_of_predictions]
+            ax.plot(sorted_values[index], label=f'{label[index]}')
+            ax.legend(loc = 'upper left' )
+        ax.plot(np.array(y_test[index].reset_index()['Age_death'].sort_values()), label = 'Ground Truth')
         ax.legend(loc = 'upper left' )
         ax.set_xlabel('Index')
         ax.set_ylabel('Predicted Age')
@@ -45,9 +43,10 @@ def plot_prediction(y_test, list_of_predictions, label, save_prefix = ''):
 
     matplotlib.rc('font', **font)
     plt.tight_layout()
-    datetime = datetime.datetime.now().strftime('%Y-%m-%d')
-    plt.savefig(f'YL_{datetime}_{prefix}_prediction.pdf')
+    time = datetime.datetime.now().strftime('%Y-%m-%d')
+    plt.savefig(f'YL_{time}_{save_prefix}_prediction.pdf')
     plt.show()
+    plt.close()
 
 def plot_table(ret, save_prefix = ''):
     font = {'size'   : 15}

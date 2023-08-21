@@ -1,0 +1,22 @@
+module load miniconda; conda activate ABCD_new; python /gpfs/gibbs/pi/gerstein/jjl86/project/aging_YL/code/run.py -p 11 -i 0
+module load miniconda; conda activate ABCD_new; python /gpfs/gibbs/pi/gerstein/jjl86/project/aging_YL/code/run.py -p 11 -i 0 -s 1
+module load miniconda; conda activate ABCD_new; python /gpfs/gibbs/pi/gerstein/jjl86/project/aging_YL/code/run.py -p 11 -i 1
+module load miniconda; conda activate ABCD_new; python /gpfs/gibbs/pi/gerstein/jjl86/project/aging_YL/code/run.py -p 11 -i 1 -s 1
+module load miniconda; conda activate ABCD_new; python /gpfs/gibbs/pi/gerstein/jjl86/project/aging_YL/code/run.py -p 11 -i 2
+module load miniconda; conda activate ABCD_new; python /gpfs/gibbs/pi/gerstein/jjl86/project/aging_YL/code/run.py -p 11 -i 2 -s 1
+module load miniconda; conda activate ABCD_new; python /gpfs/gibbs/pi/gerstein/jjl86/project/aging_YL/code/run.py -p 11 -i 3
+module load miniconda; conda activate ABCD_new; python /gpfs/gibbs/pi/gerstein/jjl86/project/aging_YL/code/run.py -p 11 -i 3 -s 1
+module load miniconda; conda activate ABCD_new; python /gpfs/gibbs/pi/gerstein/jjl86/project/aging_YL/code/run.py -p 11 -i 4
+module load miniconda; conda activate ABCD_new; python /gpfs/gibbs/pi/gerstein/jjl86/project/aging_YL/code/run.py -p 11 -i 4 -s 1
+module load miniconda; conda activate ABCD_new; python /gpfs/gibbs/pi/gerstein/jjl86/project/aging_YL/code/run.py -p 11 -i 5
+module load miniconda; conda activate ABCD_new; python /gpfs/gibbs/pi/gerstein/jjl86/project/aging_YL/code/run.py -p 11 -i 5 -s 1
+module load miniconda; conda activate ABCD_new; python /gpfs/gibbs/pi/gerstein/jjl86/project/aging_YL/code/run.py -p 11 -i 6
+module load miniconda; conda activate ABCD_new; python /gpfs/gibbs/pi/gerstein/jjl86/project/aging_YL/code/run.py -p 11 -i 6 -s 1
+module load miniconda; conda activate ABCD_new; python /gpfs/gibbs/pi/gerstein/jjl86/project/aging_YL/code/run.py -p 11 -i 7
+module load miniconda; conda activate ABCD_new; python /gpfs/gibbs/pi/gerstein/jjl86/project/aging_YL/code/run.py -p 11 -i 7 -s 1
+module load miniconda; conda activate ABCD_new; python /gpfs/gibbs/pi/gerstein/jjl86/project/aging_YL/code/run.py -p 11 -i 8
+module load miniconda; conda activate ABCD_new; python /gpfs/gibbs/pi/gerstein/jjl86/project/aging_YL/code/run.py -p 11 -i 8 -s 1
+module load miniconda; conda activate ABCD_new; python /gpfs/gibbs/pi/gerstein/jjl86/project/aging_YL/code/run.py -p 11 -i 9
+module load miniconda; conda activate ABCD_new; python /gpfs/gibbs/pi/gerstein/jjl86/project/aging_YL/code/run.py -p 11 -i 9 -s 1
+module load miniconda; conda activate ABCD_new; python /gpfs/gibbs/pi/gerstein/jjl86/project/aging_YL/code/run.py -p 11 -i 10
+module load miniconda; conda activate ABCD_new; python /gpfs/gibbs/pi/gerstein/jjl86/project/aging_YL/code/run.py -p 11 -i 10 -s 1

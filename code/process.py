@@ -10,6 +10,7 @@ from sklearn.metrics import mean_absolute_error
 from sklearn.model_selection import GridSearchCV
 import argparse
 from shap_values import cal_shap_values
+from plot import plot_prediction
 
 def get_list_of_prefix_from_dir(path, dataset_id = '9'):
     if dataset_id == '9' or dataset_id == '24':
@@ -53,6 +54,18 @@ def log_normalize(df):
 def transpose(df):
     df_standardized = df.T.apply(lambda x: x.values.reshape(-1,1).flatten())
     return df_standardized
+
+def plot_tsne(X):
+    from sklearn.manifold import TSNE
+    X_embedded = TSNE(n_components=2, random_state=42).fit_transform(X)
+    return X_embedded
+
+def plot_umap(X):
+    from umap import UMAP
+    X_embedded = UMAP(n_components=2, random_state=42).fit_transform(X)
+    return X_embedded
+
+
 
 def process_to_expression_matrix(name_prefix, dataset_id = '9'):
     if dataset_id == '9' or dataset_id == '24':
@@ -115,13 +128,23 @@ def process_cov_and_merge_cov(expression_df, dataset_id = '9', **kwags):
     return X, y
 
 
-def AD_model_split(X, y, random_state = 42, disease_type = 'control', **kwags):
+def AD_model_split(X, y, random_state = 42, disease_type = 'Alzheimers/dementia', **kwags):
     print("Performing AD Model...")
     all_disease_type = ['Alzheimers/dementia', 'Control', 'control', 'Schizophrenia', 'ASD', 'Bipolar Disorder']
     assert disease_type in all_disease_type, "Disease type not found"
-    X_train = X.loc[(X['Disorder_Control'] == 1) | (X['Disorder_control'] == 1)]
-    y_train = y.loc[(X['Disorder_Control'] == 1) | (X['Disorder_control'] == 1)]
-    X_train, X_holdout, y_train, y_holdout = train_test_split(X_train, y_train, random_state=random_state)
+    X_train = X.loc[((X['Disorder_Control'] == 1) | (X['Disorder_control'] == 1))]
+    y_train = y.loc[((X['Disorder_Control'] == 1) | (X['Disorder_control'] == 1))]
+    X_train_gt_70 = X_train.loc[y_train > 75]
+    y_train_gt_70 = y_train.loc[y_train > 75]
+    X_train_se_70 = X_train.loc[y_train <= 75]
+    y_train_se_70 = y_train.loc[y_train <= 75]
+    test_size = len(X.loc[X[f'Disorder_Alzheimers/dementia'] == 1]) / len(X_train_gt_70)
+    X_train_remain, X_holdout, y_train_remain, y_holdout = train_test_split(X_train_gt_70, y_train_gt_70, 
+    test_size = test_size, random_state=random_state)
+
+    X_train = pd.concat([X_train_se_70, X_train_remain])
+    y_train = pd.concat([y_train_se_70, y_train_remain])
+
     if (disease_type == 'Control') or (disease_type == 'control'):
         X_test = X_holdout
         y_test = y_holdout
@@ -146,7 +169,8 @@ def stratified_train_test_split(X, y, test_size, random_state, num_bins = 10):
 
 
 def fit_model(X, y, model = 'XGBoost', grid_search_cv = 0, random_state = 42, 
-    AD_Model = False, only_cov = False, remove_cov = False, stratify = False, shap = False, feature_importance = False, **kwags):
+    AD_Model = False, only_cov = False, remove_cov = False, stratify = False, 
+    shap = False, feature_importance = False, **kwags):
     # Split the dataset into train and test sets
     assert int(AD_Model) + int(stratify) <= 1, 'Confilicting train test split'
     assert int(only_cov) + int(remove_cov) <= 1, 'Only conv and remove cov can only have one true value'
@@ -232,7 +256,8 @@ def fit_model(X, y, model = 'XGBoost', grid_search_cv = 0, random_state = 42,
 
     # Now 'predictions' will hold the predicted 'Age_death' for the test set.
     
-def predict(list_of_prefix, gene_num = 500, fixed_index = None, dataset_id = '9', save_model = False, save_intermediate = False, **kwags):
+def predict(list_of_prefix, gene_num = 500, fixed_index = None, dataset_id = '9', 
+    save_model = False, save_intermediate = False, plot_predictions = True, **kwags):
     # if len(list_of_prefix) == 1:
     #     print(f'=======> Processing {list_of_prefix[0]}')
     #     expression_df = process_file(list_of_prefix[0], gene_num, dataset_id = dataset_id, **kwags)
@@ -245,6 +270,7 @@ def predict(list_of_prefix, gene_num = 500, fixed_index = None, dataset_id = '9'
     stratify = 'stratify' if stratify else 'random'
     list_of_predictions = []
     list_of_results = []
+    list_of_ground_truth = []
     for pre in list_of_prefix:
         print(f'=======> Processing {pre}')
         expression_df = process_file(pre, gene_num, dataset_id = dataset_id)
@@ -254,6 +280,7 @@ def predict(list_of_prefix, gene_num = 500, fixed_index = None, dataset_id = '9'
         print(f'number of genes {len(list(expression_df))}')
         model, X_train, X_test, y_train, y_test, predictions, ret, save = process_cov_model_prediction(expression_df, dataset_id = dataset_id, **kwags)
         list_of_predictions.append(predictions)
+        list_of_ground_truth.append(y_test)
         random_state = kwags['random_state']
         if save_intermediate:
             for k, val in save.items():
@@ -278,6 +305,7 @@ def predict(list_of_prefix, gene_num = 500, fixed_index = None, dataset_id = '9'
         model, X_train, X_test, y_train, y_test, predictions, ret, save = process_cov_model_prediction(expression_df, dataset_id = dataset_id,  
         only_cov = True,  **kwags)
         list_of_predictions.append(predictions)
+        list_of_ground_truth.append(y_test)
         if save_intermediate:
             for k, val in save.items():
                 val = pd.Series(val) if isinstance(val, pd.Index) else val
@@ -289,7 +317,9 @@ def predict(list_of_prefix, gene_num = 500, fixed_index = None, dataset_id = '9'
         ret['number of features'] = X_train.shape[1]
         list_of_results.append(ret)
     final_results = pd.DataFrame(list_of_results)
-    return list_of_predictions, y_test, final_results
+    if plot_predictions:
+        plot_prediction(list_of_ground_truth, list_of_predictions, list_of_prefix + ['Baseline'], 'AD_model' )
+    return list_of_predictions, list_of_ground_truth, final_results
 
 def predict_with_different_seeds(list_of_prefix, gene_num = 500, fixed_index = None, dataset_id = '9', random_state = 42, num_runs = 10, **kwags):
     list_of_seeds = [i + random_state for i in range(num_runs)]

@@ -9,12 +9,12 @@ def parse_argument():
     parser.add_argument('-p', '--partition', help = 'partition',type=int,default=1)
     parser.add_argument('-i', '--index', help = 'index of the partition',type=int, default=0)
     parser.add_argument('-s', '--stratify', help = 'Stratified sampling', type=int, default=0)
-    parser.add_argument('-c', '--cross_val', help = 'Cross Validation Fold', type = int, default=3)
-    parser.add_argument('-n', '--num_runs', help = 'Number of different seeds', type = int, default=10)
-    parser.add_argument('-A', '--AD_Model', help= 'Train on control and predict on AD', type = int, default=0)
-    parser.add_argument('--save_intermediate', help='save intermediate results', type = int, default=1)
-    parser.add_argument('--shap', help='perform shap', type = int, default=1)
-    parser.add_argument('--feature_importance', help='record feature importance', type = int, default=1)
+    parser.add_argument('-c', '--cross_val', help = 'Cross Validation Fold', type = int, default=1)
+    parser.add_argument('-n', '--num_runs', help = 'Number of different seeds', type = int, default=1)
+    parser.add_argument('-A', '--AD_Model', help= 'Train on control and predict on AD', type = int, default=1)
+    parser.add_argument('--save_intermediate', help='save intermediate results', type = int, default=0)
+    parser.add_argument('--shap', help='perform shap', type = int, default=0)
+    parser.add_argument('--feature_importance', help='record feature importance', type = int, default=0)
     args = parser.parse_args()
     return args
 
@@ -33,10 +33,9 @@ if __name__ == '__main__':
     # celltype_names = ['L2.3.IT']
 
     # celltype_names = ['L2.3.IT']
-    intersect_of_all = get_index_intersect(celltype_names, dataset_id = args.dataset_id)
-    # intersect_of_all = None
+    # intersect_of_all = get_index_intersect(celltype_names, dataset_id = args.dataset_id)
+    intersect_of_all = None
     celltype_names_subsetted = [celltype_names[i] for i in range(args.index, len(celltype_names), args.partition)]
-    print(celltype_names_subsetted)
    
     rets = predict_with_different_seeds(celltype_names_subsetted,
     gene_num = args.gene_num, dataset_id=args.dataset_id, 
