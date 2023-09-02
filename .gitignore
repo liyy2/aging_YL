@@ -7,3 +7,14 @@ dSQ
 dSQ_results
 dsq-task_dsp_full_gene_model-6234262_01-r205u17n04.out
 dsq-task_dsp_full_gene_model-6316275_12-r207u30n04.out
+*.pdf
+*.out
+*.txt
+*.csv
+*.log
+*.tsv
+*.txt.gz
+*.tar.gz
+*.zip
+*.zip.1
+*.pyc

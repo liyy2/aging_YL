@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 import datetime
 import matplotlib 
 import numpy as np
+import shap
 
 def reorderLegend(ax=None,order=None,unique=False):
     if ax is None: ax=plt.gca()
@@ -47,6 +48,15 @@ def plot_prediction(y_test, list_of_predictions, label, save_prefix = ''):
     plt.savefig(f'YL_{time}_{save_prefix}_prediction.pdf')
     plt.show()
     plt.close()
+
+
+def plot_shap(prefix, shap_values, sort_by_age = True):
+    # size of the figure
+    plt.figure(figsize=(15, 10))
+    matplotlib.rcParams['pdf.fonttype'] = 42
+    matplotlib.rcParams['ps.fonttype'] = 42
+    shap.plots.heatmap(shap_values, shap_values.sum(1), show=False) if sort_by_age else shap.plots.heatmap(shap_values, show=False)
+    plt.savefig(f'{prefix}_shap.pdf')
 
 def plot_table(ret, save_prefix = ''):
     font = {'size'   : 15}

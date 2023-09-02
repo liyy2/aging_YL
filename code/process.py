@@ -10,7 +10,7 @@ from sklearn.metrics import mean_absolute_error
 from sklearn.model_selection import GridSearchCV
 import argparse
 from shap_values import cal_shap_values
-from plot import plot_prediction
+from plot import plot_prediction, plot_shap
 
 def get_list_of_prefix_from_dir(path, dataset_id = '9'):
     if dataset_id == '9' or dataset_id == '24':
@@ -128,7 +128,7 @@ def process_cov_and_merge_cov(expression_df, dataset_id = '9', **kwags):
     return X, y
 
 
-def AD_model_split(X, y, random_state = 42, disease_type = 'Alzheimers/dementia', **kwags):
+def AD_model_split(X, y, random_state = 42, disease_type = 'control', **kwags):
     print("Performing AD Model...")
     all_disease_type = ['Alzheimers/dementia', 'Control', 'control', 'Schizophrenia', 'ASD', 'Bipolar Disorder']
     assert disease_type in all_disease_type, "Disease type not found"
@@ -229,6 +229,8 @@ def fit_model(X, y, model = 'XGBoost', grid_search_cv = 0, random_state = 42,
         df_shap.index = X.index
         save['shap'] = df_shap
         save['X'] = X
+        plot_shap('Oligo', shap_values)
+
 
     if feature_importance:
         feature_importance = model.feature_importances_
@@ -257,7 +259,7 @@ def fit_model(X, y, model = 'XGBoost', grid_search_cv = 0, random_state = 42,
     # Now 'predictions' will hold the predicted 'Age_death' for the test set.
     
 def predict(list_of_prefix, gene_num = 500, fixed_index = None, dataset_id = '9', 
-    save_model = False, save_intermediate = False, plot_predictions = True, **kwags):
+    save_model = False, save_intermediate = False, plot_predictions = False, **kwags):
     # if len(list_of_prefix) == 1:
     #     print(f'=======> Processing {list_of_prefix[0]}')
     #     expression_df = process_file(list_of_prefix[0], gene_num, dataset_id = dataset_id, **kwags)
