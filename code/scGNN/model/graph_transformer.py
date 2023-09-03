@@ -233,12 +233,11 @@ class TransformerConv(MessagePassing):
     
 
 class GraphTransformer(torch.nn.Module):
-    def __init__(self, in_channels, hidden_channels, num_layers = 3, heads = 8, dropout = 0):
+    def __init__(self, hidden_channels, num_layers = 3, heads = 8, dropout = 0):
         super().__init__()
         self.num_layers = num_layers
         self.dropout = dropout
         self.transformer_layers = torch.nn.ModuleList()
-        self.transformer_layers.append(TransformerConv(in_channels, hidden_channels, heads = heads, concat = True, dropout = dropout))
         for i in range(num_layers):
             self.transformer_layers.append(TransformerConv(hidden_channels, hidden_channels, heads = heads, concat = True, dropout = dropout))
     

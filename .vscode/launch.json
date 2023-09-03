@@ -8,10 +8,13 @@
             "name": "Python: Current File",
             "type": "python",
             "request": "launch",
-            "program": "${file}",
+            "program": "/gpfs/gibbs/pi/gerstein/jjl86/project/aging_YL/code/scGNN/run.py",
             "console": "integratedTerminal",
             "args": [],
-            "justMyCode": false
+            "justMyCode": false,
+            "env": {
+                "PYTHONPATH": "/gpfs/gibbs/pi/gerstein/jjl86/project/aging_YL/code",
+                "CUDA_VISIBLE_DEVICES": "0,1,2,3"}
         }
     ]
 }

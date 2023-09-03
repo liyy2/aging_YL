@@ -22,10 +22,10 @@ def load_covariates(file_path, cov_path):
     cov['Age_death'] = cov['Age_death'].replace('89+', '90')
     cov['Age_death'] = cov['Age_death'].replace('90+', '90')
     cov['Age_death'] = cov['Age_death'].astype(float)
-    cov_encoded = pd.get_dummies(cov, 
-        columns=['Cohort', 'Biological_Sex', 'Disorder', 
-        '1000G_ancestry'])  
-    cov_encoded = cov_encoded.dropna()
+    # cov_encoded = pd.get_dummies(cov, 
+    #     columns=['Cohort', 'Biological_Sex', 'Disorder', 
+    #     '1000G_ancestry'])  
+    cov_encoded = cov
     # label encode the covariates beside age
     for col in cov_encoded.columns:
         if col != 'Age_death':

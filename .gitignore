@@ -18,3 +18,9 @@ dsq-task_dsp_full_gene_model-6316275_12-r207u30n04.out
 *.zip
 *.zip.1
 *.pyc
+code/__pycache__/process.cpython-310.pyc
+*.pt
+latest-run
+wandb
+*.ckpt
+code/__pycache__/process.cpython-310.pyc

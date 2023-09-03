@@ -12,6 +12,7 @@ class CovEmbedNet(torch.nn.Module):
         self.linear = torch.nn.Linear(10 * len(category_list), hidden)
     
     def forward(self, cov):
+        cov = cov.unsqueeze(0) if len(cov.shape) == 1 else cov
         cov_embedding = [embedding(cov[:, i]) for i, embedding in enumerate(self.embedding_list)]
         cov_embedding = torch.cat(cov_embedding, dim=1)
         cov_embedding = self.linear(cov_embedding)

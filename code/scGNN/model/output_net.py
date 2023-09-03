@@ -6,10 +6,8 @@ class OutputNet(torch.nn.Module):
     OutputNet for age prediction, recieve the mean of the age and std of the age as input
     '''
 
-    def __init__(self, hidden_dim, age_mean, age_std, *args, **kwargs) -> None:
+    def __init__(self, hidden_dim, *args, **kwargs) -> None:
         super().__init__(*args, **kwargs)
-        self.register_buffer('age_mean', age_mean)
-        self.register_buffer('age_std', age_std)
         self.linear = torch.nn.Linear(2 * hidden_dim, 1)
         self.reduce = 'mean'
     

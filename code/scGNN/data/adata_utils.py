@@ -28,7 +28,10 @@ def process_raw_matrix(df):
     return adata 
 
 
-def process_single_cell(adata):
+
+import scanpy as sc
+
+def process_single_cell(adata, num_genes = 500):
     # Filter out genes that are detected in less than 3 cells
     sc.pp.filter_genes(adata, min_cells=3)
 
@@ -41,6 +44,18 @@ def process_single_cell(adata):
     # Filter out genes that are detected in less than 3 cells
     sc.pp.filter_genes(adata, min_cells=3)
 
+    # # Identify Highly Variable Genes
+    sc.pp.highly_variable_genes(adata)
+
+    # Sort genes by dispersion values in descending order
+    hvg_sorted = adata.var.sort_values(by="dispersions", ascending=False).index
+
+    # Take the top 2000 highly variable genes
+    top_hvg = hvg_sorted[:num_genes]
+
+    # Subset the data to include only the top 2000 HVGs
+    adata = adata[:, top_hvg]
+
     # Scale the data to unit variance and zero mean
     sc.pp.scale(adata, max_value=10)
 
@@ -50,22 +65,19 @@ def process_single_cell(adata):
     # Perform nearest neighbor search
     sc.pp.neighbors(adata, n_neighbors=10, n_pcs=40)
 
-
+    # Uncomment other downstream methods if needed
     # Perform UMAP
     # sc.tl.umap(adata)
     # # Perform Louvain clustering
     # sc.tl.louvain(adata, resolution=0.3)
-
     # # Perform Leiden clustering
     # sc.tl.leiden(adata, resolution=0.3)
-
     # # Perform tSNE
     # sc.tl.tsne(adata)
-
     # # Perform Diffusion Map
     # sc.tl.diffmap(adata)
-    return adata
 
+    return adata
 
 def neighbor_graph(adata):
     '''
