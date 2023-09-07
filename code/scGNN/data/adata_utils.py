@@ -34,16 +34,17 @@ import scanpy as sc
 def process_single_cell(adata, num_genes = 500):
     # Filter out genes that are detected in less than 3 cells
     sc.pp.filter_genes(adata, min_cells=3)
-
+    sc.pp.filter_cells(adata, min_genes=200)
     # Normalize the data to 10,000 reads per cell, so that counts become comparable among cells
     sc.pp.normalize_total(adata, target_sum=1e4)
 
     # Logarithmize the data
     sc.pp.log1p(adata)
-
-    # Filter out genes that are detected in less than 3 cells
-    sc.pp.filter_genes(adata, min_cells=3)
-
+    ### filter cells
+    # Filter out cells that have more than 10% mitochondrial genes expressed
+    # Calculate the percentage of mitochondrial genes expressed
+    
+    
     # # Identify Highly Variable Genes
     sc.pp.highly_variable_genes(adata)
 
@@ -61,9 +62,9 @@ def process_single_cell(adata, num_genes = 500):
 
     # Perform PCA
     sc.tl.pca(adata, svd_solver='arpack')
-
+    actual_n_pcs = min(40, adata.obsm['X_pca'].shape[1])
     # Perform nearest neighbor search
-    sc.pp.neighbors(adata, n_neighbors=10, n_pcs=40)
+    sc.pp.neighbors(adata, n_neighbors=10, n_pcs=actual_n_pcs)
 
     # Uncomment other downstream methods if needed
     # Perform UMAP

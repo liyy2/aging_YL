@@ -238,10 +238,13 @@ class GraphTransformer(torch.nn.Module):
         self.num_layers = num_layers
         self.dropout = dropout
         self.transformer_layers = torch.nn.ModuleList()
+        self.layer_norms = torch.nn.ModuleList()
         for i in range(num_layers):
-            self.transformer_layers.append(TransformerConv(hidden_channels, hidden_channels, heads = heads, concat = True, dropout = dropout))
-    
+            self.transformer_layers.append(TransformerConv(hidden_channels, hidden_channels//heads, heads = heads, concat = True, dropout = dropout))
+            self.layer_norms.append(torch.nn.LayerNorm(hidden_channels))
+
     def forward(self, x, edge_index):
         for i in range(self.num_layers):
-            x = self.transformer_layers[i](x, edge_index)
+            x = x + self.transformer_layers[i](x, edge_index)
+            x = self.layer_norms[i](x)
         return x
