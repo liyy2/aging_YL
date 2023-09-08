@@ -1,5 +1,5 @@
-from typing import Any, List, Union
-from pytorch_lightning.utilities.types import STEP_OUTPUT, TRAIN_DATALOADERS, LRSchedulerPLType
+from typing import Any, List, Optional, Union
+from pytorch_lightning.utilities.types import STEP_OUTPUT, TRAIN_DATALOADERS, LRSchedulerPLType, LRSchedulerTypeUnion
 from scGNN.model.cell_embed_transformer import CellEmbedTransformer, CellEmbedTransformerLinearAttention
 import torch
 from scGNN.model.covariates_embed_net import CovEmbedNet
@@ -13,6 +13,7 @@ from scipy.stats import pearsonr, spearmanr
 
 from torch.optim.lr_scheduler import OneCycleLR
 from pytorch_lightning.callbacks import LearningRateMonitor
+from timm.scheduler import create_scheduler_v2
 
 
 class LightningAgingModel(pl.LightningModule):
@@ -50,7 +51,8 @@ class LightningAgingModel(pl.LightningModule):
         age_pred = self.forward(batch)
         loss = self.loss_fn(age_pred, batch.y)
         # Log metrics
-        self.log('train_loss', loss, on_step=True, on_epoch=False, sync_dist=True, prog_bar=True)
+        # log lr
+        self.log('train_loss', loss, on_step=True, on_epoch=False, sync_dist=True, prog_bar=True, batch_size=batch.y.shape[0])
 
         return {'loss': loss}
 
@@ -59,7 +61,7 @@ class LightningAgingModel(pl.LightningModule):
         age_pred = self.forward(batch)
         loss = self.loss_fn(age_pred, batch.y)
         self.validation_step_output.append({'val_loss': loss, 'preds': age_pred, 'targets': batch.y})
-        self.log('val_loss', loss, on_step=False, on_epoch=True, sync_dist=True)
+        self.log('val_loss', loss, on_step=False, on_epoch=True, sync_dist=True, batch_size=batch.y.shape[0])
         return {'val_loss': loss, 'preds': age_pred, 'targets': batch.y}
 
     def on_validation_epoch_end(self):
@@ -111,8 +113,38 @@ class LightningAgingModel(pl.LightningModule):
 
     def configure_optimizers(self):
         optimizer = torch.optim.Adam(self.parameters(), lr=self.lr)
-        return optimizer
+        lr_scheduler_config = {
+        # REQUIRED: The scheduler instance
+        "scheduler": create_scheduler_v2(
+            optimizer,
+            num_epochs= self.config['max_epochs'],
+            decay_epochs= self.config['max_epochs'] - self.config['lr_warmup_epochs'],
+            warmup_epochs= self.config['lr_warmup_epochs'],
+            min_lr=1e-6,
+            patience_epochs=30,)[0],
+        # The unit of the scheduler's step size, could also be 'step'.
+        # 'epoch' updates the scheduler on epoch end whereas 'step'
+        # updates it after a optimizer update.
+        "interval": "epoch",
+        # How many epochs/steps should pass between calls to
+        # `scheduler.step()`. 1 corresponds to updating the learning
+        # rate after every epoch/step.
+        "frequency": 1,
+        # Metric to to monitor for schedulers like `ReduceLROnPlateau`
+        "monitor": "val_loss",
+        # If set to `True`, will enforce that the value specified 'monitor'
+        # is available when the scheduler is updated, thus stopping
+        # training if not found. If set to `False`, it will only produce a warning
+        "strict": True,
+        # If using the `LearningRateMonitor` callback to monitor the
+        # learning rate progress, this keyword can be used to specify
+        # a custom logged name
+        "name": 'lr',
+        }
+        return [optimizer], [lr_scheduler_config]
 
+    def lr_scheduler_step(self, scheduler: LRSchedulerTypeUnion, metric: Any | None) -> None:
+        scheduler.step(self.current_epoch)
 
 
 

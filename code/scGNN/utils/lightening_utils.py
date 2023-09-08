@@ -14,7 +14,7 @@ class ConfigureSchdulerCallback(Callback):
     def __init__(self, steps_per_epoch=None):
         self.steps_per_epoch = steps_per_epoch
     
-    def on_train_start(self, trainer, pl_module):
+    def on_train_init(self, trainer, pl_module):
 
         optimizer = trainer.optimizers[0]  # Assuming you have only one optimizer
 

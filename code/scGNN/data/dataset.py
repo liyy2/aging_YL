@@ -154,8 +154,8 @@ class SingleCellDataModule(LightningDataModule):
     def setup(self, seed = 42, stage=None):
         # Assign train/val datasets
         full_dataset = SingleCellDataset(self.file_path, config=self.config)
-        n_train = int(len(full_dataset) * 0.7)
-        n_val = int(len(full_dataset) * 0.3)
+        n_train = int(len(full_dataset) * 0.8)
+        n_val = int(len(full_dataset) * 0.2)
         n_test = len(full_dataset) - n_train - n_val
         self.train_dataset, self.val_dataset, self.test_dataset = random_split(full_dataset, [n_train, n_val, n_test], generator=torch.Generator().manual_seed(seed))
 

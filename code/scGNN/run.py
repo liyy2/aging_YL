@@ -1,7 +1,7 @@
 import argparse
 import torch
 import pytorch_lightning as pl
-from pytorch_lightning.callbacks import EarlyStopping
+from pytorch_lightning.callbacks import EarlyStopping, LearningRateMonitor
 from pytorch_lightning.loggers import WandbLogger
 
 from scGNN.model.aging_model import LightningAgingModel
@@ -9,6 +9,7 @@ from scGNN.data.dataset import SingleCellDataModule
 import numpy as np
 from scGNN.utils.lightening_utils import EpochTestCallback, calculate_stats, EMACallback, ConfigureSchdulerCallback
 from scGNN.utils.argparse_utils import convert_argpasere_to_dict
+
 
 
 def seed_everything(seed):
@@ -29,6 +30,7 @@ def parse_args():
     parser.add_argument('--max_epochs', type=int, default=500, help='number of epochs to train')
     parser.add_argument('--batch_size', type=int, default=32, help='batch size')
     parser.add_argument('--lr', type=float, default=1e-3, help='learning rate')
+    parser.add_argument('--lr_warmup_epochs', type=int, default=20, help='learning rate warmup epochs')
     parser.add_argument('--patience', type=int, default=200, help='patience for early stopping')
     parser.add_argument('--seed', type=int, default=42, help='random seed')
     parser.add_argument('--preprocess', action='store_true', default=False, help='preprocess data')
@@ -68,17 +70,15 @@ def main():
     model = LightningAgingModel(args.num_genes, args.hidden, args.num_transformer_layer, 
                                 args.cat_list, lr = args.lr, config=config)
     
-
+    lr_monitor = LearningRateMonitor(logging_interval='epoch')
     # Define logger and callbacks
     wandb_logger = WandbLogger(project='AgingModel', log_model=True, config=config)
     early_stopping = EarlyStopping('val_loss', patience=args.patience)
-    # epoch_test_callback = EpochTestCallback(test_interval=args.test_interval, datamodule=data_module)
     ema_callback = EMACallback(decay=args.ema_decay, use_ema_weights=True)
-    scheduler_config_callback = ConfigureSchdulerCallback(data_module.train_dataloader().__len__())
     # Trainer
     trainer = pl.Trainer(
         max_epochs=args.max_epochs,
-        callbacks=[scheduler_config_callback, early_stopping, ema_callback],
+        callbacks=[early_stopping, ema_callback, lr_monitor],
         logger=[wandb_logger],
         strategy='ddp_find_unused_parameters_true',
         precision="bf16",
