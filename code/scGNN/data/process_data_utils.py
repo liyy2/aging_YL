@@ -7,6 +7,7 @@ import torch
 from torch_geometric.data import Data
 from torch_geometric.utils import add_self_loops, to_undirected
 import os
+import dask.dataframe as dd
 
 __cov_cat_list__ = [12, 2, 10, 6]
 
@@ -15,6 +16,10 @@ def read_gzipped_bed(file_path):
     with gzip.open(file_path, 'rt') as f:
         data = pd.read_csv(f, sep="\t")
     return data
+
+def read_gzipped_bed_dask(file_path):
+    data = dd.read_csv(file_path, sep="\t", compression="gzip", blocksize=None)
+    return data.compute()
 
 def load_covariates(file_path, cov_path):
     cov = pd.read_csv(cov_path, sep =',' )
@@ -36,15 +41,26 @@ def load_covariates(file_path, cov_path):
     return cov_encoded.loc[id]
 
 class RuntimeCategoryEncoder:
-    def __init__(self):
+    def __init__(self, embed_file = None, static = False):
         self.category_to_code = {}
         self.code_to_category = {}
         self.next_code = 0
+        self.static = static
+        if embed_file:
+            file = pd.read_csv(embed_file)
+            self.category_to_code = dict(zip(file['canonical_symbol'].to_list(), file.index.tolist()))
+            self.code_to_category = dict(zip(file.index.tolist(), file['canonical_symbol'].to_list()))
+            self.next_code = len(file['canonical_symbol'])
+
     
     def encode(self, categories):
+        if isinstance(categories, str):
+            categories = [categories]
         codes = []
         for category in categories:
             if category not in self.category_to_code:
+                if self.static:
+                    raise Exception('CategoryEncoder is static, but category {} is not in the dictionary'.format(category))
                 self.category_to_code[category] = self.next_code
                 self.code_to_category[self.next_code] = category
                 self.next_code += 1
@@ -149,16 +165,21 @@ class ExpressionBinner:
 # Sample data: expression_matrix with shape (num_cells, num_genes)
 # Initialize with random values as an example
 
+# if __name__ == '__main__':
+#     num_cells = 100
+#     num_genes = 50
+#     expression_matrix = torch.rand(num_cells, num_genes)
+#     k = 5  # number of bins/classes
+
+#     binned_matrix = bin_values(expression_matrix, k)
+#     print(binned_matrix[0], expression_matrix[0])
+
+
 if __name__ == '__main__':
-    num_cells = 100
-    num_genes = 50
-    expression_matrix = torch.rand(num_cells, num_genes)
-    k = 5  # number of bins/classes
-
-    binned_matrix = bin_values(expression_matrix, k)
-    print(binned_matrix[0], expression_matrix[0])
-
-
+    # data = read_gzipped_bed_dask('/gpfs/gibbs/pi/gerstein/jjl86/project/aging_YL/snrna_expr_matrices/CMC/CMC_MSSM_002-annotated_matrix.txt.gz')
+    data = read_gzipped_bed_dask('/gpfs/gibbs/pi/gerstein/jjl86/project/aging_YL/snrna_expr_matrices/Ma_et_al/HSB628-annotated_matrix.txt.gz', )
+    
+    print(data.iloc[:, 0:10])
 
 
 

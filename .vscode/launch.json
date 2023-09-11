@@ -15,6 +15,19 @@
                 "PYTHONPATH": "/gpfs/gibbs/pi/gerstein/jjl86/project/aging_YL/code",}
         },
         {
+            "name": "Python: Run Preprocess",
+            "type": "python",
+            "request": "launch",
+            "program": "/gpfs/gibbs/pi/gerstein/jjl86/project/aging_YL/code/scGNN/run.py",
+            "console": "integratedTerminal",
+            "args": ["--preprocess","--process_only"],
+            "justMyCode": false,
+            "env": {
+                "PYTHONPATH": "/gpfs/gibbs/pi/gerstein/jjl86/project/aging_YL/code",
+                "CUDA_VISIBLE_DEVICES": "0,1,2,3"
+            }
+        },
+        {
             "name": "Python: Run",
             "type": "python",
             "request": "launch",
@@ -26,6 +39,6 @@
                 "PYTHONPATH": "/gpfs/gibbs/pi/gerstein/jjl86/project/aging_YL/code",
                 "CUDA_VISIBLE_DEVICES": "0,1,2,3"
             }
-        }
+        },
     ]
 }

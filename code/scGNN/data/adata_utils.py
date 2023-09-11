@@ -1,6 +1,9 @@
 import pandas as pd
 import scanpy as sc
 import torch
+import scanpy as sc
+
+
 def process_raw_matrix(df):
     # Assuming `df` is your DataFrame
     # df = pd.read_csv("your_file.csv")
@@ -29,21 +32,24 @@ def process_raw_matrix(df):
 
 
 
-import scanpy as sc
 
-def process_single_cell(adata, num_genes = 500):
+
+def process_single_cell(adata, num_genes = 500, gene_list_path = '/gpfs/gibbs/pi/gerstein/jjl86/project/aging_YL/gene-embeddings-Gene2Vec-200dim.csv'):
     # Filter out genes that are detected in less than 3 cells
     sc.pp.filter_genes(adata, min_cells=3)
-    sc.pp.filter_cells(adata, min_genes=200)
+    sc.pp.filter_cells(adata, min_genes=500)
+    sc.pp.filter_cells(adata, min_counts=1000)
+    # only keep the protein coding genes
+    if gene_list_path:
+        gene_list = pd.read_csv(gene_list_path)
+        gene_list = gene_list['canonical_symbol'].values
+        adata = adata[:, adata.var.gene_symbols.isin(gene_list)]
+
     # Normalize the data to 10,000 reads per cell, so that counts become comparable among cells
     sc.pp.normalize_total(adata, target_sum=1e4)
 
     # Logarithmize the data
     sc.pp.log1p(adata)
-    ### filter cells
-    # Filter out cells that have more than 10% mitochondrial genes expressed
-    # Calculate the percentage of mitochondrial genes expressed
-    
     
     # # Identify Highly Variable Genes
     sc.pp.highly_variable_genes(adata)
@@ -65,19 +71,6 @@ def process_single_cell(adata, num_genes = 500):
     actual_n_pcs = min(40, adata.obsm['X_pca'].shape[1])
     # Perform nearest neighbor search
     sc.pp.neighbors(adata, n_neighbors=10, n_pcs=actual_n_pcs)
-
-    # Uncomment other downstream methods if needed
-    # Perform UMAP
-    # sc.tl.umap(adata)
-    # # Perform Louvain clustering
-    # sc.tl.louvain(adata, resolution=0.3)
-    # # Perform Leiden clustering
-    # sc.tl.leiden(adata, resolution=0.3)
-    # # Perform tSNE
-    # sc.tl.tsne(adata)
-    # # Perform Diffusion Map
-    # sc.tl.diffmap(adata)
-
     return adata
 
 def neighbor_graph(adata):

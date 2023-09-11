@@ -26,9 +26,13 @@ class LightningAgingModel(pl.LightningModule):
         self.graph_transformer = GraphTransformer(hidden, num_transformer_layer)
         self.cell_type_embedding = torch.nn.Embedding(max_cell_type, hidden)
         if config['linear_attn']:
-            self.cell_embed_transformer = CellEmbedTransformerLinearAttention(hidden, heads=8, num_layers=config['num_cell_embed_transformer_layer'], config = config)
+            self.cell_embed_transformer = CellEmbedTransformerLinearAttention(hidden, heads=8, 
+                                                                              num_layers=config['num_cell_embed_transformer_layer'], 
+                                                                              config = config)
         else:
-            self.cell_embed_transformer = CellEmbedTransformer(hidden, heads=8, num_layers=config['num_cell_embed_transformer_layer'])
+            self.cell_embed_transformer = CellEmbedTransformer(hidden, 
+                                                               heads=8, 
+                                                               num_layers=config['num_cell_embed_transformer_layer'])
         self.num_transformer_layer = num_transformer_layer
         self.loss_fn = Huber(mean_train=config['mean'], std_train=config['std'])
         self.lr = lr
@@ -52,7 +56,9 @@ class LightningAgingModel(pl.LightningModule):
         loss = self.loss_fn(age_pred, batch.y)
         # Log metrics
         # log lr
-        self.log('train_loss', loss, on_step=True, on_epoch=False, sync_dist=True, prog_bar=True, batch_size=batch.y.shape[0])
+        self.log('train_loss', loss, on_step=False, 
+                 on_epoch=True, sync_dist=True, 
+                 prog_bar=True, batch_size=batch.y.shape[0])
 
         return {'loss': loss}
 

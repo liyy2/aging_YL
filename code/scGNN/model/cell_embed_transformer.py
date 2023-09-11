@@ -5,7 +5,7 @@ from linear_attention_transformer import LinearAttentionTransformer
 from performer_pytorch import Performer
 
 class CellEmbedTransformerLinearAttention(torch.nn.Module):
-    def __init__(self, hidden, heads = 8, num_layers = 1, max_num_genes = 20000, config = None, *args, **kwargs) -> None:
+    def __init__(self, hidden, heads = 8, num_layers = 1, max_num_genes = 25000, config = None, *args, **kwargs) -> None:
         super().__init__(*args, **kwargs)
         self.hidden = hidden
         self.heads = heads
@@ -15,10 +15,25 @@ class CellEmbedTransformerLinearAttention(torch.nn.Module):
         depth = num_layers,
         heads = 8,
         dim_head = 64,
-        causal = False, local_window_size= 512)
+        causal = False, 
+        local_window_size= 3000)
         self.linear = torch.nn.Linear(hidden, hidden)
-        self.embedding = torch.nn.Embedding(max_num_genes, hidden)
+        self.embedding_gene = torch.nn.Embedding(max_num_genes, 200)
+        self.gene_proj = torch.nn.Linear(200, hidden)
+        self.load_pretrained_embeding()
+        self.embed = nn.Sequential(self.embedding_gene, self.gene_proj)
         self.cls_embedding = torch.nn.Embedding(1, hidden)
+
+
+
+    def load_pretrained_embeding(self, embed_file =  '/gpfs/gibbs/pi/gerstein/jjl86/project/aging_YL/gene-embeddings-Gene2Vec-200dim.csv'):
+        import pandas as pd
+        new_weight = torch.zeros_like(self.embedding_gene.weight)
+        embed = pd.read_csv(embed_file)
+        embed = embed.iloc[:,3:]
+        embed = torch.tensor(embed.values, dtype=self.embedding_gene.weight.dtype)
+        new_weight[:embed.shape[0]] = embed
+        self.embedding_gene.weight.data.copy_(new_weight)
 
     
     def forward(self, x, gene_type, batch):
@@ -28,7 +43,7 @@ class CellEmbedTransformerLinearAttention(torch.nn.Module):
         '''
         # batch * num_genes * hidden
         gene_type = gene_type.unsqueeze(0) if len(gene_type.shape) == 1 else gene_type
-        gene_embed = self.embedding(gene_type)
+        gene_embed = self.embed(gene_type)
         # num_nodes * num_genes * hidden
         gene_embed = gene_embed.index_select(0, batch)
         x = self.expression_embed(x) + gene_embed
@@ -73,7 +88,7 @@ class CellEmbedTransformer(torch.nn.Module):
         return x
 
 if __name__ == '__main__':
-    x = torch.randn(100, 2000)
+    x = torch.randint(0, 5, (100, 2000))
     gene_type = torch.randint(0, 10000, (2, 2000))
     batch = torch.cat([torch.zeros(50), torch.ones(50)]).long()
-    CellEmbedTransformer(128, 8)(x, gene_type, batch)
+    CellEmbedTransformerLinearAttention(128, 8)(x, gene_type, batch)

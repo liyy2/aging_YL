@@ -5,7 +5,7 @@ from pytorch_lightning.callbacks import EarlyStopping, LearningRateMonitor
 from pytorch_lightning.loggers import WandbLogger
 
 from scGNN.model.aging_model import LightningAgingModel
-from scGNN.data.dataset import SingleCellDataModule
+from scGNN.data.dataset import SingleCellDataModule, SingleCellDataModuleLMDB
 import numpy as np
 from scGNN.utils.lightening_utils import EpochTestCallback, calculate_stats, EMACallback, ConfigureSchdulerCallback
 from scGNN.utils.argparse_utils import convert_argpasere_to_dict
@@ -35,14 +35,14 @@ def parse_args():
     parser.add_argument('--seed', type=int, default=42, help='random seed')
     parser.add_argument('--preprocess', action='store_true', default=False, help='preprocess data')
     parser.add_argument('--process_only', action='store_true', default=False, help='process data')
-    parser.add_argument('--num_genes', default=500, type=int, help='number of genes')
+    parser.add_argument('--num_genes', default=3000, type=int, help='number of genes')
     parser.add_argument('--ema_decay', default=0.999, type=float, help='ema decay')
     parser.add_argument('--node_sampling_ratio', default=0.5, type=float, help='node sampling ratio')
     parser.add_argument('--max_node_num', default=2000, type=int, help='max node num')
     parser.add_argument('--min_node_num', default=1000, type=int, help='min node num')
     parser.add_argument('--test_interval', default=10, type=int, help='test interval')
     parser.add_argument('--linear_attn', action='store_true', default=True, help='use linear attention')
-    parser.add_argument('--bin_expression', default=10, type=int)
+    parser.add_argument('--bin_expression', default=20, type=int)
     args = parser.parse_args()
     return args
 
@@ -56,7 +56,7 @@ def main():
     # Define data module
     # Create a DataModule using SingleCellDataset
     # data_module = YourDataModule(dataset, ...)
-    data_module = SingleCellDataModule('/gpfs/gibbs/pi/gerstein/jjl86/project/aging_YL/snrna_expr_matrices', 
+    data_module = SingleCellDataModuleLMDB('/gpfs/gibbs/pi/gerstein/jjl86/project/aging_YL/lmdb-1', 
                                        batch_size=1, config=config)
     if args.preprocess:
         data_module.prepare_data()
